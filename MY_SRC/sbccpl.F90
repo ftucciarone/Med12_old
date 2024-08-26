@@ -280,7 +280,7 @@ CONTAINS
          &                  sn_rcv_wdrag , sn_rcv_qns   , sn_rcv_emp  , sn_rcv_rnf   , sn_rcv_cal   ,  &
          &                  sn_rcv_iceflx, sn_rcv_co2   , sn_rcv_mslp ,                                &
          &                  sn_rcv_icb   , sn_rcv_isf   , sn_rcv_wfreq, sn_rcv_tauw  ,                 &
-         &                  sn_rcv_ts_ice, rn_vfac      , nn_skin_sst , rpref !!, sn_rcv_qtrice
+         &                  sn_rcv_ts_ice, rn_vfac      , , rpref !!, sn_rcv_qtrice
       !!---------------------------------------------------------------------
       !
       ! ================================ !
@@ -357,7 +357,7 @@ CONTAINS
          WRITE(numout,*)'                      - mesh          = ', sn_snd_crtw%clvgrd 
          WRITE(numout,*)
          WRITE(numout,*)'      coeff. for ocean currents (rn_vfac)    = ', rn_vfac
-         WRITE(numout,*)'      whether to use skin sst (nn_skin_sst ) = ', nn_skin_sst
+         WRITE(numout,*)'      whether to use skin sst () = ', nn_skin_sst
          WRITE(numout,*)'                   0: no;     1: cool+skin;     2: skin only;    3: cool skin'
          WRITE(numout,*)'      Reference pressure for IB effect rpref = ', rpref
       ENDIF
@@ -365,7 +365,7 @@ CONTAINS
       !                                   ! allocate sbccpl arrays
       IF( sbc_cpl_alloc() /= 0 )   CALL ctl_stop( 'STOP', 'sbc_cpl_alloc : unable to allocate arrays' )
 
-      IF( nn_skin_sst .AND. .NOT. ln_diurnal )  CALL ctl_stop( 'STOP', 'sbc_cpl : skin_sst is TRUE but skin sst scheme is not enabled' )
+      IF( (nn_skin_sst > 0) .AND. .NOT. ln_diurnal )  CALL ctl_stop( 'STOP', 'sbc_cpl : skin_sst is TRUE but skin sst scheme is not enabled' )
      
       ! ================================ !
       !   Define the receive interface   !
