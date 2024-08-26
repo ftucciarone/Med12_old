@@ -16,7 +16,7 @@ It is important to stick with version 4.0.7, version 4.0 does not work
 cd cfgs
 cp -r AMM12 MED12
 cd MED12
-mv cpp_AMM12.fcm cpp_MED12.fcm
+echo "bld::tool::fppkeys key_mpp_mpi key_asminc" > cpp_MED12.fcm
 ```
 then remove `top` from `cpp_MED12.fcm`
 copy `EXPREF` into 
