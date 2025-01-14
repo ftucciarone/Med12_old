@@ -21,3 +21,8 @@ echo "bld::tool::fppkeys key_mpp_mpi key_asminc" > cpp_MED12.fcm
 then remove `top` from `cpp_MED12.fcm`
 copy `EXPREF` into 
 compile
+
+
+# Retrieving and processing forcing fields
+
+### Era5 
