@@ -26,5 +26,5 @@ compile
 # Retrieving and processing forcing fields
 
 ### Atmospheric forcing: ERA5 from Copernicus Climate Data Store https://cds.climate.copernicus.eu/, [readme (instructions)](forcings/era5-atmos/readme-era5.md)
-### Lateral boundary conditions: CMEMS from Copernicus Marine Service https://marine.copernicus.eu/, [readme (instructions)](forcings/CMEMS-latbnd/readme-cmems.md)
+### Lateral boundary conditions: CMEMS from Copernicus Marine Service https://marine.copernicus.eu/, [readme (instructions)](forcings/cmems-latbnd/readme-cmems.md)
 
