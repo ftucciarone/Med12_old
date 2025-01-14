@@ -6,3 +6,4 @@
  `-e`	Allows multiple commands to be executed. \
  `-f`	Reads sed commands from a file instead of the command line. \
  `-r`	Enables extended regular expressions. \
+ eg `$sed 's/unix/linux/' geekfile.txt > output.txt`
