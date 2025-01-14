@@ -70,7 +70,7 @@ target = "_OUTPUT_"
 client.retrieve(dataset, request, target)
 ```
 bash file to retrieve the data
-```bash
+```shell
 ys=2024
 ms=1
 me=11
