@@ -25,4 +25,5 @@ compile
 
 # Retrieving and processing forcing fields
 
-### Era5 
+### Atmospheric forcing: ERA5 from Copernicus Climate Data Store https://cds.climate.copernicus.eu/, [instructions](forcings/era5/era5.md)
+
