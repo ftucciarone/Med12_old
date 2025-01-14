@@ -3,6 +3,18 @@
 ERA5 (atmospheric forcing) is downloaded from Copernicus Climate Data Store https://cds.climate.copernicus.eu/
 
 
+
+- [x] #739
+- [ ] https://github.com/octo-org/octo-repo/issues/740
+- [ ] Add delight to the experience when all tasks are complete :tada:
+
+
+
+
+
+
+
+
 ## Climate Data Store API, [API](https://cds.climate.copernicus.eu/how-to-api)
 First, [register](https://accounts.ecmwf.int/auth/realms/ecmwf/login-actions/registration?client_id=cds&tab_id=w2gu_uF6V0o) to ECMWF and then [log in](https://accounts.ecmwf.int/auth/realms/ecmwf/login-actions/authenticate?client_id=cds&tab_id=w2gu_uF6V0o). Once logged in, copy the code displayed below to the file `$HOME/.cdsapirc`
 (in your Unix/Linux environment)
