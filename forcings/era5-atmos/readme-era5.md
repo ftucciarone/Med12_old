@@ -22,11 +22,11 @@ First, [register](https://accounts.ecmwf.int/auth/realms/ecmwf/login-actions/reg
 url: https://cds.climate.copernicus.eu/api
 key: <PERSONAL-ACCESS-TOKEN>
 ```
-is now completed with a personal alphanumeric token. Copy the code displayed to the file `$HOME/.cdsapirc` (in your Unix/Linux environment). You can now install the CDS API client via the package management system pip, by running on Unix/Linux the command below.
+is now completed with a personal alphanumeric token. Copy the code (the whole box) displayed to the file `$HOME/.cdsapirc` (in your Unix/Linux environment). You can now install the CDS API client via the package management system pip, by running on Unix/Linux the command below.
 ```
 pip install "cdsapi>=0.7.2"
 ```
-Once the CDS API client is installed, it can be used to request data from the datasets listed in the CDS, ADS, ECDS and CEMS Early Warning DS catalogues. The basic template to downlad the data is the following:
+Once the CDS API client is installed, it can be used to request data from the datasets listed in the CDS, ADS, ECDS and CEMS Early Warning DS catalogues. The basic template to download the data is the following:
 ```python
 import cdsapi
 client = cdsapi.Client()
@@ -55,7 +55,7 @@ request = {
 target = 'download.grib'
 client.retrieve(dataset, request, target)
 ```
- Please note that there are several terms and conditions to agree to when downloading the data, so please run the example in order to agree them. The first request will end in an error such as below
+ Please note that there are several terms and conditions to agree to when downloading the data, so please run the example in order to agree to them. The first request will end in an error such as below
 ```console
 requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://cds.climate.copernicus.eu/api/retrieve/v1/processes/reanalysis-era5-pressure-levels/execution
 required licences not accepted
@@ -65,10 +65,9 @@ visit the listed website and accept the license(s), then retry.
 
 ### Basic python sript to download the data
 ```python
+#!/usr/bin/python
 import cdsapi
-
 client = cdsapi.Client()
-
 dataset = "reanalysis-era5-single-levels"
 request = {
     "product_type": ["reanalysis"],
@@ -104,7 +103,6 @@ request = {
     "download_format": "unarchived"
 }
 target = "_OUTPUT_"
-
 client.retrieve(dataset, request, target)
 ```
 bash file to retrieve the data
@@ -128,10 +126,10 @@ for y in $ys; do
 
 		out=${var}_${y}.grib
 		scr=${var}_${y}.run
-		sed -e "s/_VARIABLE_/$var/g" \
-		    -e "s/_YEAR_/$y/g" \
-		    -e "s/_LIST_MONTHS_/${lm}/g" \
-		    -e "s/_OUTPUT_/$out/g" \
+		sed -e "s!_VARIABLE_!$var!g" \
+		    -e "s!_YEAR_!$y!g" \
+		    -e "s!_LIST_MONTHS_!${lm}!g" \
+		    -e "s!_OUTPUT_!$out!g" \
 		run_sedf_ep > $scr
 
 		chmod +x $scr
