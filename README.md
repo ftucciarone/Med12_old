@@ -1,5 +1,5 @@
 # Folder setup
-The code is structured with base folder `Med12` and inside it it is found
+The code is structured with base folder `Med12` and inside it is found:
 - nemo-src, containing the source code of nemo v4.0.7;
 - data-static, containing all those input fields that are not required to change during execution;
 - data-dynamic, containing conversely all those data that change from run to run (forcings, lateral boundary conditions and so on)
