@@ -3,7 +3,7 @@
 ERA5 (atmospheric forcing) is downloaded from Copernicus Climate Data Store https://cds.climate.copernicus.eu/
 
 The atmospheric data will be processed with the following workflow (checked box means tested)
-- [ ] Install Climate Data Store API 
+- [x] Install Climate Data Store API 
 - [ ] Download using fetch* script
 - [ ] process analysis using the proc_fld* script
 - [ ] process forecast using the proc_fld* script
