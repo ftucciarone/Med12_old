@@ -1,24 +1,29 @@
 # Folder setup
+The code is structured with base folder `Med12` and inside it it is found
+- nemo-src, containing the source code of nemo v4.0.7;
+- data-static, containing all those input fields that are not required to change during execution;
+- data-dynamic, containing conversely all those data that change from run to run (forcings, lateral boundary conditions and so on)
+- preprocessing-[era5, cmecs], all the scripts necessary to retrieve data and process them to finally put them into data-dynamics.
+This structure is represented in the following tree.
 ```
-.
 └── Med12/
-    ├── nemo-src/
-    │   ├── arch
-    │   ├── ...
-    │   ├── src
-    │   ├── test
-    │   └── tools
-    ├── static-data/
+    ├── data-dynamic/
+    │   ├── era5/
+    │   └── cmecs/
+    ├── data-static/
     │   ├── basin_mask.nc
     │   ├── ...
     │   ├── domain_cfg.nc
     │   ├── ...
     │   ├── weights_ERA5-MED7km_bicub.nc
     │   └── weights_ERA5-MED7km_bilin.nc
-    ├── dynamic-data/
-    │   ├── era5/
-    │   └── cmecs/
-    ├── era5-preprocessing/
+    ├── nemo-src/
+    │   ├── arch
+    │   ├── ...
+    │   ├── src
+    │   ├── test
+    │   └── tools
+    ├── preprocessing-era5/
     │   ├── grib/
     │   │   └── *.grib (raw data)
     │   ├── run/
@@ -26,7 +31,7 @@
     │   ├── tools/
     │   │   └── *.F90 (process raw data into NetCDF)
     │   └── fetch-and-process.py
-    └── cmecs-preprocessing
+    └── preprocessing-cmecs
 ```
 
 
