@@ -33,7 +33,7 @@ This structure is represented in the following tree.
     │   └── fetch-and-process.py
     └── preprocessing-cmecs
 ```
-This structure will be referred throughout these instructions and can be build with the following commands:
+This structure will be referred throughout these instructions and can be built with the following commands:
 ```shell
 export ROOT=$HOME
 # Base folder
