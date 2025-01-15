@@ -26,7 +26,7 @@ is now completed with a personal alphanumeric token. Copy the code displayed to 
 ```
 pip install "cdsapi>=0.7.2"
 ```
-Once the CDS API client is installed, it can be used to request data from the datasets listed in the CDS, ADS, ECDS and CEMS Early Warning DS catalogues.
+Once the CDS API client is installed, it can be used to request data from the datasets listed in the CDS, ADS, ECDS and CEMS Early Warning DS catalogues. The basic template to downlad the data is the following:
 ```python
 import cdsapi
 client = cdsapi.Client()
@@ -36,6 +36,30 @@ request = {<SELECTION-REQUEST>}
 target = "<TARGET-FILE>"
 # Request
 client.retrieve(dataset, request, target)
+```
+An example of downloading procedure is the following.
+```python
+import cdsapi
+client = cdsapi.Client()
+dataset = 'reanalysis-era5-pressure-levels'
+request = {
+    'product_type': ['reanalysis'],
+    'variable': ['geopotential'],
+    'year': ['2024'],
+    'month': ['03'],
+    'day': ['01'],
+    'time': ['13:00'],
+    'pressure_level': ['1000'],
+    'data_format': 'grib',
+}
+target = 'download.grib'
+client.retrieve(dataset, request, target)
+```
+ Please note that there are several terms and conditions to agree to when downloading the data, so please run the example in order to agree them 
+```console
+requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://cds.climate.copernicus.eu/api/retrieve/v1/processes/reanalysis-era5-pressure-levels/execution
+required licences not accepted
+Not all the required licences have been accepted; please visit https://cds.climate.copernicus.eu/datasets/reanalysis-era5-pressure-levels?tab=download#manage-licences to accept the required licence(s).
 ```
 ### Basic python sript to download the data
 ```python
