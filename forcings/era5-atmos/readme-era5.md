@@ -55,12 +55,14 @@ request = {
 target = 'download.grib'
 client.retrieve(dataset, request, target)
 ```
- Please note that there are several terms and conditions to agree to when downloading the data, so please run the example in order to agree them 
+ Please note that there are several terms and conditions to agree to when downloading the data, so please run the example in order to agree them. The first request will end in an error such as below
 ```console
 requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://cds.climate.copernicus.eu/api/retrieve/v1/processes/reanalysis-era5-pressure-levels/execution
 required licences not accepted
 Not all the required licences have been accepted; please visit https://cds.climate.copernicus.eu/datasets/reanalysis-era5-pressure-levels?tab=download#manage-licences to accept the required licence(s).
 ```
+visit the listed website and accept the license(s), then retry.
+
 ### Basic python sript to download the data
 ```python
 import cdsapi
