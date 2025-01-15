@@ -1,3 +1,36 @@
+# Folder setup
+
+.
+└── Med12/
+    ├── nemo-src/
+    │   ├── arch
+    │   ├── ...
+    │   ├── src
+    │   ├── test
+    │   └── tools
+    ├── static-data/
+    │   ├── basin_mask.nc
+    │   ├── ...
+    │   ├── domain_cfg.nc
+    │   ├── ...
+    │   ├── weights_ERA5-MED7km_bicub.nc
+    │   └── weights_ERA5-MED7km_bilin.nc
+    ├── dynamic-data/
+    │   ├── era5/
+    │   └── cmecs/
+    ├── era5-preprocessing/
+    │   ├── grib/
+    │   │   └── *.grib (raw data)
+    │   ├── run/
+    │   │   └── *.run (download scripts)
+    │   ├── tools/
+    │   │   └── *.F90 (process raw data into NetCDF)
+    │   └── fetch-and-process.py
+    └── cmecs-preprocessing
+
+
+
+
 # Med12 configuration setup
 
 The configuration is described in Storto et. al. https://gmd.copernicus.org/articles/16/4811/2023/gmd-16-4811-2023.html
