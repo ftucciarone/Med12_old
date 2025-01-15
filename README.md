@@ -6,6 +6,7 @@ The code is structured with base folder `Med12` and inside it is found:
 - preprocessing-[era5, cmecs], all the scripts necessary to retrieve data and process them to finally put them into data-dynamics.
 This structure is represented in the following tree.
 ```
+.
 └── Med12/
     ├── data-dynamic/
     │   ├── era5/
@@ -17,12 +18,14 @@ This structure is represented in the following tree.
     │   ├── ...
     │   ├── weights_ERA5-MED7km_bicub.nc
     │   └── weights_ERA5-MED7km_bilin.nc
+    ├── med12-src/
+    │   └── ...
     ├── nemo-src/
     │   ├── arch
     │   ├── ...
     │   ├── src
     │   ├── test
-    │   └── ...
+    │   └── tools
     ├── preprocessing-era5/
     │   ├── grib/
     │   │   └── *.grib (raw data)
