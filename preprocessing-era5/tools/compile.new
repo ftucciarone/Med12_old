@@ -1,0 +1,38 @@
+#!/bin/ksh
+set -x
+
+COMP="ifort"
+NCDF=/opt/intel/netcdf-c-4.7.4-f-4.5.3-impi
+ADD=""
+
+str=""
+for f in merge.F90 handlerr.F90; do
+   $COMP -c -g -I $NCDF/include $f || exit -1
+   str="$str `echo $f | cut -d. -f1`.o"
+done
+
+$COMP -g $str -L$NCDF/lib -lnetcdff $ADD -o merge.x
+
+str=""
+for f in merge_prec.F90 handlerr.F90; do
+   $COMP -c -g -I $NCDF/include $f || exit -1
+   str="$str `echo $f | cut -d. -f1`.o"
+done
+
+$COMP -g $str -L$NCDF/lib -lnetcdff $ADD -o merge_prec.x
+
+str=""
+for f in merge_rad.F90 handlerr.F90; do
+   $COMP -c -g -I $NCDF/include $f || exit -1
+   str="$str `echo $f | cut -d. -f1`.o"
+done
+
+$COMP -g $str -L$NCDF/lib -lnetcdff $ADD -o merge_rad.x
+
+str=""
+for f in read_field2st.F90 write_field2st.F90 td2qs.F90 handlerr.F90; do
+   $COMP -c -g -I $NCDF/include $f || exit -1
+   str="$str `echo $f | cut -d. -f1`.o"
+done
+
+$COMP -g $str -L$NCDF/lib -lnetcdff $ADD -o td2qs.x
