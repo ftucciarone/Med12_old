@@ -22,7 +22,7 @@ This structure is represented in the following tree.
     │   ├── ...
     │   ├── src
     │   ├── test
-    │   └── tools
+    │   └── ...
     ├── preprocessing-era5/
     │   ├── grib/
     │   │   └── *.grib (raw data)
