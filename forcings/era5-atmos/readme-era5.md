@@ -17,13 +17,12 @@ The atmospheric data will be processed with the following workflow (checked box 
 
 
 ## Climate Data Store API, [API](https://cds.climate.copernicus.eu/how-to-api)
-First, [register](https://accounts.ecmwf.int/auth/realms/ecmwf/login-actions/registration?client_id=cds&tab_id=w2gu_uF6V0o) to ECMWF and then [log in](https://accounts.ecmwf.int/auth/realms/ecmwf/login-actions/authenticate?client_id=cds&tab_id=w2gu_uF6V0o). Once logged in, copy the code displayed below to the file `$HOME/.cdsapirc`
-(in your Unix/Linux environment)
+First, [register](https://accounts.ecmwf.int/auth/realms/ecmwf/login-actions/registration?client_id=cds&tab_id=w2gu_uF6V0o) to ECMWF and go to the [API web site](https://cds.climate.copernicus.eu/how-to-api) to [log in](https://accounts.ecmwf.int/auth/realms/ecmwf/login-actions/authenticate?client_id=cds&tab_id=w2gu_uF6V0o). Once logged in, the box that previously contained
 ```
 url: https://cds.climate.copernicus.eu/api
 key: <PERSONAL-ACCESS-TOKEN>
 ```
-You can now install the CDS API client via the package management system pip, by running on Unix/Linux the command below.
+is now completed with a personal alphanumeric token. Copy the code displayed to the file `$HOME/.cdsapirc` (in your Unix/Linux environment). You can now install the CDS API client via the package management system pip, by running on Unix/Linux the command below.
 ```
 pip install "cdsapi>=0.7.2"
 ```
