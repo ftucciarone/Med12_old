@@ -1,0 +1,22 @@
+#!/bin/ksh
+set -x
+
+COMP="ifort"
+NCDF=/opt/intel/netcdf-c-4.7.4-f-4.5.3-impi
+
+str=""
+for f in decum.F90 handlerr.F90; do
+   $COMP -c -g -I $NCDF/include $f || exit -1
+   str="$str `echo $f | cut -d. -f1`.o"
+done
+
+$COMP -g $str -L$NCDF/lib -lnetcdff -o decum.x
+
+
+str=""
+for f in decum2.F90 handlerr.F90; do
+   $COMP -c -g -I $NCDF/include $f || exit -1
+   str="$str `echo $f | cut -d. -f1`.o"
+done
+
+$COMP -g $str -L$NCDF/lib -lnetcdff -o decum2.x
