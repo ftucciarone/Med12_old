@@ -33,7 +33,26 @@ This structure is represented in the following tree.
     │   └── fetch-and-process.py
     └── preprocessing-cmecs
 ```
-
+This structure will be referred throughout these instructions and can be build with the following commands:
+```shell
+export ROOT=$HOME
+# Base folder
+mkdir -p $ROOT/Med12
+# Folder for static data
+mkdir -p $ROOT/Med12/data-static
+# Folder for dynamic data
+mkdir -p $ROOT/Med12/data-dynamic
+mkdir -p $ROOT/Med12/data-dynamic/era5-atmos
+mkdir -p $ROOT/Med12/data-dynamic/cmecs-latbnd
+# Folder for the nemo source code
+mkdir -p $ROOT/Med12/nemo-src
+# Folders for atmospheric forcing preprocessing
+mkdir -p $ROOT/Med12/preprocessing-era5/grib
+mkdir -p $ROOT/Med12/preprocessing-era5/run
+mkdir -p $ROOT/Med12/preprocessing-era5/tools
+# Folders for lateral boundary conditions preprocessing
+mkdir -p $ROOT/Med12/preprocessing-cmecs
+```
 
 
 # Med12 configuration setup
@@ -43,9 +62,8 @@ The configuration is described in Storto et. al. https://gmd.copernicus.org/arti
 installation can be done with the following steps
 
 ```
-mkdir NemoMed12
-cd NemoMed12
-svn co https://forge.ipsl.jussieu.fr/nemo/svn/NEMO/releases/r4.0/r4.0.7/
+cd $ROOT/Med12
+svn co https://forge.ipsl.jussieu.fr/nemo/svn/NEMO/releases/r4.0/r4.0.7/ nemo-src/
 ```
 It is important to stick with version 4.0.7, version 4.0 does not work
 
