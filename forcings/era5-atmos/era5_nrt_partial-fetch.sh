@@ -15,20 +15,19 @@ mm=`printf "%02d" $me`
 lm="${lm}\"${mm}\""
 
 for y in $ys; do
-	for var in $ls_vars; do
+   for var in $ls_vars; do
 
-		out=${var}_${y}.grib
-		scr=${var}_${y}.run
-		sed -e "s/_VARIABLE_/$var/g" \
-		    -e "s/_YEAR_/$y/g" \
-		    -e "s/_LIST_MONTHS_/${lm}/g" \
-		    -e "s/_OUTPUT_/$out/g" \
-		run_sedf_ep > $scr
+      out=grib/${var}_${y}.grib
+      scr=run/${var}_${y}.run
+      sed -e "s!_VARIABLE_!$var!g" \
+          -e "s!_YEAR_!$y!g" \
+          -e "s!_LIST_MONTHS_!${lm}!g" \
+          -e "s!_OUTPUT_!$out!g" \
+      base-fetch.py > $scr
 
-		#chmod +x $scr
-		#./$scr || exit -1
-
-	done
+      chmod +x $scr
+      ./$scr || exit -1
+   done
 done
 
 exit 0
