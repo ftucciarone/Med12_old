@@ -1,5 +1,5 @@
 # Folder setup
-
+```
 .
 └── Med12/
     ├── nemo-src/
@@ -27,7 +27,7 @@
     │   │   └── *.F90 (process raw data into NetCDF)
     │   └── fetch-and-process.py
     └── cmecs-preprocessing
-
+```
 
 
 
