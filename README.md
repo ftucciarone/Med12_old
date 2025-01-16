@@ -85,7 +85,7 @@ compile
 # Retrieving and processing forcing fields
 Prerequisites
 ```shell
-sudo apt-get install cdo
+sudo apt-get install cdo nco
 ```
 ### [Atmospheric forcing: ERA5 from Copernicus Climate Data Store](https://cds.climate.copernicus.eu/), [readme (instructions)](preprocessing-era5/readme-era5.md)
 ### [Lateral boundary conditions: CMEMS from Copernicus Marine Service](https://marine.copernicus.eu/), [readme (instructions)](forcings/cmems-latbnd/readme-cmems.md)
