@@ -87,6 +87,6 @@ Prerequisites
 ```shell
 sudo apt-get install cdo nco
 ```
-### [Atmospheric forcing: ERA5 from Copernicus Climate Data Store](https://cds.climate.copernicus.eu/), [readme (instructions)](preprocessing-era5/readme-era5.md)
-### [Lateral boundary conditions: CMEMS from Copernicus Marine Service](https://marine.copernicus.eu/), [readme (instructions)](forcings/cmems-latbnd/readme-cmems.md)
+### Atmospheric forcing: [ERA5](https://cds.climate.copernicus.eu/) from Copernicus Climate Data Store, [readme (instructions)](preprocessing-era5/readme-era5.md)
+### Lateral boundary conditions: [CMEMS](https://marine.copernicus.eu/) from Copernicus Marine Service, [readme (instructions)](forcings/cmems-latbnd/readme-cmems.md)
 
