@@ -1,10 +1,10 @@
 # Era5 preprocessing in python
 
-We have three main directories: 
+We have three main directories (along with a `home` directory): 
 - `work`: here we store temporary and intermediate files;
 - `grib`: here we store the raw `.grib` files from the download;
 - `arch`: here we store the processed files, those that will be fed to NEMO.
-- 
+ 
 Each processing script will have the following declaration:
 ```python
 # Directories
