@@ -34,9 +34,9 @@ param = {
                      "ucf": float     # Units conversion factor
                      },
          "maskland": {
-                     "mask": True,
-                     "exec": "/home/ftucciar/Med12/preprocessing-era5/tools/scr2/flandR.x",
-                     "maskfile": "/home/ftucciar/Med12/preprocessing-era5/tools/lsm_ERA5_0.25.nc"
+                     "mask": bool,    # Flag to mask the land
+                     "exec": str,     # Path to executable (as in this case this is in fortran)
+                     "maskfile": str  # Path to NetCDF file witht he mask 
                      }
          }
 ```
