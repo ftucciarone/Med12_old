@@ -8,17 +8,24 @@ def era5_process(param, dirs, s_year, s_month, e_year, e_month, cleanup=False):
             
         Parameters of the input field
         param = {
-                 "long_name" : str,    # Long name describing the field
-                 "short_name" : str,   # Short name
-                 "num_id" : int,       # Numerical ID of grib variable (ds.var.GRIB_paramId)
-                 "chr_id" : str,       # Character version of numerical ID
-                 "var_name" : str,       # Variable ID
-                 "out_name" : str,     # Output name of the variable
-                 "nts" : int,          # Number of time steps
-                 "cfs" : float,        # Change of units coefficient
-                 "nx" : int,           # Dimensions in x
-                 "ny" : int            # Dimensions in y
-            }        
+                 "long_name" : str,                # Long name describing the field
+                 "var_name" : str,                 # Variable ID
+                 "out_name" : str,                 # Output name of the variable
+                 "chr_id" : str,                   # Character version of numerical ID
+                 "nts" : int,                      # Number of time steps
+                 "nx" : int,                       # Dimensions in x
+                 "ny" : int                        # Dimensions in y
+                 "daymean": bool,                  # Flag to average over one day
+                 "units_change": {
+                                  "change": bool,  # Flag to convert into another set of units
+                                  "ucf": float     # Units conversion factor
+                                  },
+                 "maskland": {
+                              "mask": bool,        # Flag to mask the land
+                              "exec": str,         # Path to executable (as in this case this is in fortran)
+                              "maskfile": str      # Path to NetCDF file witht he mask 
+                              }
+                 }        
         
         Directories 
         dirs = {
