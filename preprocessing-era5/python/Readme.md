@@ -21,14 +21,14 @@ dirs = {
 ## Parameters dictionary for the processing
 ```python
 param = {
-         "long_name" : str,    # Long name describing the field
-         "var_name" : str,     # Variable ID
-         "out_name" : str,     # Output name of the variable
-         "chr_id" : str,       # Character version of numerical ID
-         "nts" : int,          # Number of time steps
-         "nx" : int,           # Dimensions in x
-         "ny" : int            # Dimensions in y
-         "daymean": bool,     # Flag to average over one day
+         "long_name" : str,           # Long name describing the field
+         "var_name" : str,            # Variable ID
+         "out_name" : str,            # Output name of the variable
+         "chr_id" : str,              # Character version of numerical ID
+         "nts" : int,                 # Number of time steps
+         "nx" : int,                  # Dimensions in x
+         "ny" : int                   # Dimensions in y
+         "daymean": bool,             # Flag to average over one day
          "units_change": {
                      "change": bool,  # Flag to convert into another set of units
                      "ucf": float     # Units conversion factor
