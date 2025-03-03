@@ -259,6 +259,54 @@ param["chr_id"] = "144"
 era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
 ```
 ### Surface Solar Radiation Downwards (`swrd`)
+This parameter is the amount of solar radiation (also known as shortwave radiation) that reaches a horizontal plane at the surface of the Earth. This parameter comprises both direct and diffuse solar radiation.
+
+Radiation from the Sun (solar, or shortwave, radiation) is partly reflected back to space by clouds and particles in the atmosphere (aerosols) and some of it is absorbed. The rest is incident on the Earth's surface (represented by this parameter). See [further documentation](https://www.ecmwf.int/sites/default/files/elibrary/2015/18490-radiation-quantities-ecmwf-model-and-mars.pdf).
+
+To a reasonably good approximation, this parameter is the model equivalent of what would be measured by a pyranometer (an instrument used for measuring solar radiation) at the surface. However, care should be taken when comparing model parameters with observations, because observations are often local to a particular point in space and time, rather than representing averages over a [model grid box](https://confluence.ecmwf.int/display/CKB/Model+grid+box+and+time+step).
+
+This parameter [is accumulated over a particular time period which depends on the data extracted](https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation#ERA5:datadocumentation-Meanrates/fluxesandaccumulations). The units are joules per square metre (J m-2). To convert to watts per square metre (W m-2), the accumulated values should be divided by the accumulation period expressed in seconds.
+```python
+# -*- coding: utf-8 -*-
+import json
+from era5_process import era5_process
+
+# Directories
+dirs = json.load( open('directories.json') )
+
+# Parameters of the input field
+param = {
+         # Parameters depending on the field processed
+         # Refer to: https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation 
+         #
+         "long_name": "Variable_name_in_CDS", # Variable name in CDS, e.g. '10m_u_component_of_wind'
+         "var_name": "ShortName",             # ShortName, e.g. '10u'
+         "out_name": "output_name",           # Output name of the variable
+         "chr_id": "paramID",                 # paramID, e.g. '165'
+         # Common parameters
+         "nts": 1,
+         "nx": 1440,
+         "ny": 721,
+         "daymean": False,
+         "units_change": {
+                          "change": True,
+                          "ucf": 3600
+                         },
+         "maskland": {
+                      "mask": True,
+                      "exec": "/home/ftucciar/Med12/preprocessing-era5/tools/scr2/flandR.x",
+                      "maskfile": "/home/ftucciar/Med12/preprocessing-era5/tools/lsm_ERA5_0.25.nc"
+                     }
+        }
+# %%
+# Parameters of the input field
+# Refer to: https://apps.ecmwf.int/codes/grib/param-db/169
+param["long_name"] = "surface_solar_radiation_downwards"
+param["var_name"] = "ssrd"
+param["out_name"] = "swrd"
+param["chr_id"] = "169"
+era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
+```
 ### Surface Thermal Radiation Downwards (`lwrd`)
 
 [comment]: <> ![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
