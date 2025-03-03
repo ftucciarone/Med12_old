@@ -70,7 +70,7 @@ param = {
                      }
          }
 ```
-### 10m wind $u,v-$ components
+### 10m wind $u,v-$ components (`u10m` and `v10m`)
 These parameter are the [eastward ( $u$ )](https://codes.ecmwf.int/grib/param-db/165) and [northward ($v$)](https://codes.ecmwf.int/grib/param-db/166) components of the 10m wind. They are the horizontal speed of air moving towards the east and the north, respectively, at a height of ten metres above the surface of the Earth, in metres per second.
 
 ```python
@@ -122,3 +122,8 @@ param["chr_id"] = "166"
         
 era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
 ```
+### 2m Temperature (`t2m`)
+### Total Precipitation (`precip`)
+### Snowfall (`snow`)
+### Surface Solar Radiation Downwards (`swrd`)
+### Surface Thermal Radiation Downwards (`lwrd`)
