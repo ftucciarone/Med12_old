@@ -45,6 +45,13 @@ param = {
          }
 ```
 ## 10m wind $u,v-$ components
+10m u component of wind
+m s-1
+Magnitude of the eastward component of the two-dimensional horizontal air velocity near the surface.
+10m v component of wind
+m s-1
+Magnitude of the northward component of the two-dimensional horizontal air velocity near the surface.
+
 ```python
 # -*- coding: utf-8 -*-
 import json
