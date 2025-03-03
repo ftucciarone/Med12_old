@@ -308,5 +308,50 @@ param["chr_id"] = "169"
 era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
 ```
 ### Surface Thermal Radiation Downwards (`lwrd`)
+This parameter is the amount of thermal (also known as longwave or terrestrial) radiation emitted by the atmosphere and clouds that reaches a horizontal plane at the surface of the Earth.
 
+The surface of the Earth emits thermal radiation, some of which is absorbed by the atmosphere and clouds. The atmosphere and clouds likewise emit thermal radiation in all directions, some of which reaches the surface (represented by this parameter). See [further documentation](https://www.ecmwf.int/sites/default/files/elibrary/2015/18490-radiation-quantities-ecmwf-model-and-mars.pdf).
+
+This parameter [is accumulated over a particular time period which depends on the data extracted](https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation#ERA5:datadocumentation-Meanrates/fluxesandaccumulations). The units are joules per square metre (J m-2). To convert to watts per square metre (W m-2), the accumulated values should be divided by the accumulation period expressed in seconds.
+```
 [comment]: <> ![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+# -*- coding: utf-8 -*-
+import json
+from era5_process import era5_process
+
+# Directories
+dirs = json.load( open('directories.json') )
+
+# Parameters of the input field
+param = {
+         # Parameters depending on the field processed
+         # Refer to: https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation 
+         #
+         "long_name": "Variable_name_in_CDS", # Variable name in CDS, e.g. '10m_u_component_of_wind'
+         "var_name": "ShortName",             # ShortName, e.g. '10u'
+         "out_name": "output_name",           # Output name of the variable
+         "chr_id": "paramID",                 # paramID, e.g. '165'
+         # Common parameters
+         "nts": 1,
+         "nx": 1440,
+         "ny": 721,
+         "daymean": False,
+         "units_change": {
+                          "change": True,
+                          "ucf": 3600
+                         },
+         "maskland": {
+                      "mask": True,
+                      "exec": "/home/ftucciar/Med12/preprocessing-era5/tools/scr2/flandR.x",
+                      "maskfile": "/home/ftucciar/Med12/preprocessing-era5/tools/lsm_ERA5_0.25.nc"
+                     }
+        }
+# %%
+# Parameters of the input field
+# Refer to: https://apps.ecmwf.int/codes/grib/param-db/175
+param["long_name"] = "surface_thermal_radiation_downwards"
+param["var_name"] = "strd"
+param["out_name"] = "lwrd"
+param["chr_id"] = "175"
+era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
+```
