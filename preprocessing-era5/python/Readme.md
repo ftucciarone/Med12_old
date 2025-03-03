@@ -48,12 +48,13 @@ dirs = json.load( open('directories.json') )
 
 
 ### Parameters dictionary for the processing
+Refer to [ERA5 data documentation](https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation) page to understand where to find the parameters for this dictionary
 ```python
 param = {
-         "long_name" : str,           # Long name describing the field
-         "var_name" : str,            # Variable ID
+         "long_name" : str,           # Variable name in CDS, e.g. '10m_u_component_of_wind'
+         "var_name" : str,            # ShortName, e.g. '10u'
          "out_name" : str,            # Output name of the variable
-         "chr_id" : str,              # Character version of numerical ID
+         "chr_id" : str,              # paramID, e.g. '165'
          "nts" : int,                 # Number of time steps
          "nx" : int,                  # Dimensions in x
          "ny" : int                   # Dimensions in y
@@ -70,12 +71,7 @@ param = {
          }
 ```
 ### 10m wind $u,v-$ components
-10m u component of wind
-m s-1
-Magnitude of the eastward component of the two-dimensional horizontal air velocity near the surface.
-10m v component of wind
-m s-1
-Magnitude of the northward component of the two-dimensional horizontal air velocity near the surface.
+These parameter are the [eastward ($u$)](https://codes.ecmwf.int/grib/param-db/165) and [northward ($v$)](https://codes.ecmwf.int/grib/param-db/166) components of the 10m wind. They are the horizontal speed of air moving towards the east and the north, respectively, at a height of ten metres above the surface of the Earth, in metres per second.
 
 ```python
 # -*- coding: utf-8 -*-
