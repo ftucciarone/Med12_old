@@ -1,5 +1,5 @@
 # Era5 overview
-<img src="https://cds.climate.copernicus.eu/thumbnails/JaABbrZjt5iZG1MVCZFaW4gsA4E=/360x0/filters:format(webp)/object-store.os-api.cci2.ecmwf.int/cci2-prod-catalogue/resources/reanalysis-era5-single-levels/overview-detail_d2d128d66670fd68c467a008450654b2030747dba36dfa116bf69461747cc14a.png" width="200" height="200" />
+<img src="https://cds.climate.copernicus.eu/thumbnails/JaABbrZjt5iZG1MVCZFaW4gsA4E=/360x0/filters:format(webp)/object-store.os-api.cci2.ecmwf.int/cci2-prod-catalogue/resources/reanalysis-era5-single-levels/overview-detail_d2d128d66670fd68c467a008450654b2030747dba36dfa116bf69461747cc14a.png" width="200" height="200" ALIGN=”right”/>
 
 
 ERA5 is the fifth generation ECMWF reanalysis for the global climate and weather for the past 8 decades. Data is available from 1940 onwards. ERA5 replaces the ERA-Interim reanalysis.
