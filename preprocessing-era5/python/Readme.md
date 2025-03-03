@@ -41,3 +41,60 @@ param = {
          }
 ```
 ## 10m wind $u,v-$ components
+```python
+# -*- coding: utf-8 -*-
+"""
+Éditeur de Spyder
+
+Ceci est un script temporaire.
+"""
+
+from era5_process import era5_process
+# Directories
+dirs = {
+        "home": "/home/ftucciar",                                   # Home directory
+        "work": "/home/ftucciar/Med12/preprocessing-era5/work",     # Work directory
+        "grib": "/home/ftucciar/Med12/preprocessing-era5/grib",     # Grib directory
+        "arch": "/home/ftucciar/Med12/preprocessing-era5/archive"   # Archive (processed)
+    }
+
+# Parameters of the input field
+param = {
+         # Parameters depending on the field processed
+         "long_name": "variable_long_name",
+         "var_name": "var_nam_in_grib_file",
+         "out_name": "output_name",
+         "chr_id": "variable_ID_in_grib_file",
+         # Common parameters
+         "nts": 24,
+         "nx": 1440,
+         "ny": 721,
+         "daymean": False,
+         "units_change": {
+                          "change": False,
+                          "ucf": 1
+                         },
+         "maskland": {
+                      "mask": True,
+                      "exec": "/home/ftucciar/Med12/preprocessing-era5/tools/scr2/flandR.x",
+                      "maskfile": "/home/ftucciar/Med12/preprocessing-era5/tools/lsm_ERA5_0.25.nc"
+                     }
+        }
+
+# %%
+# Parameters of the input field
+param["long_name"] = "10m_u_component_of_wind"
+param["var_name"] = "10u"
+param["out_name"] = "u10m"
+param["chr_id"] = "165"
+
+era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
+
+# Parameters of the input field
+param["long_name"] = "10m_v_component_of_wind"
+param["var_name"] = "10v"
+param["out_name"] = "v10m"
+param["chr_id"] = "166"
+        
+era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
+```
