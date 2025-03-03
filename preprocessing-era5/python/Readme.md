@@ -47,20 +47,11 @@ param = {
 ## 10m wind $u,v-$ components
 ```python
 # -*- coding: utf-8 -*-
-"""
-Éditeur de Spyder
-
-Ceci est un script temporaire.
-"""
-
+import json
 from era5_process import era5_process
+
 # Directories
-dirs = {
-        "home": "/home/ftucciar",                                   # Home directory
-        "work": "/home/ftucciar/Med12/preprocessing-era5/work",     # Work directory
-        "grib": "/home/ftucciar/Med12/preprocessing-era5/grib",     # Grib directory
-        "arch": "/home/ftucciar/Med12/preprocessing-era5/archive"   # Archive (processed)
-    }
+dirs = json.load( open('directories.json') )
 
 # Parameters of the input field
 param = {
