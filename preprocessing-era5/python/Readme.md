@@ -25,29 +25,6 @@ Detailed information relating to the ERA5 data archive can be found in the web l
 [The ERA5 global reanalysis](https://rmets.onlinelibrary.wiley.com/doi/epdf/10.1002/qj.3803)
 Journal article describing ERA5.
 
-
-## Era5 preprocessing in python
-
-We have three main directories (along with a `home` directory): 
-- `work`: here we store temporary and intermediate files;
-- `grib`: here we store the raw `.grib` files from the download;
-- `arch`: here we store the processed files, those that will be fed to NEMO.
- 
-These directories are set in the `.json` file `directories.json` with the following syntax:
-```json
-{
-    "home": "/home/ftucciar",
-    "work": "/home/ftucciar/Med12/preprocessing-era5/work",
-    "grib": "/home/ftucciar/Med12/preprocessing-era5/grib",
-    "arch": "/home/ftucciar/Med12/preprocessing-era5/archive"
-}
-```
-and are accessed in each processing file as
-```python
-import json
-# Directories
-dirs = json.load( open('directories.json') )
-```
 ## Downloading the forcing raw data
 First, we need to download the necessary raw data. This can be done with a python API for the following fields
 
@@ -74,6 +51,29 @@ snowfall
 
 
 ## Process the raw data
+## Era5 preprocessing in python
+
+We have three main directories (along with a `home` directory): 
+- `work`: here we store temporary and intermediate files;
+- `grib`: here we store the raw `.grib` files from the download;
+- `arch`: here we store the processed files, those that will be fed to NEMO.
+ 
+These directories are set in the `.json` file `directories.json` with the following syntax:
+```json
+{
+    "home": "/home/ftucciar",
+    "work": "/home/ftucciar/Med12/preprocessing-era5/work",
+    "grib": "/home/ftucciar/Med12/preprocessing-era5/grib",
+    "arch": "/home/ftucciar/Med12/preprocessing-era5/archive"
+}
+```
+and are accessed in each processing file as
+```python
+import json
+# Directories
+dirs = json.load( open('directories.json') )
+```
+
 ### Parameters dictionary for the processing
 Refer to [ERA5 data documentation](https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation) page to understand where to find the parameters for this dictionary
 ```python
