@@ -141,7 +141,7 @@ param["out_name"] = "v10m"
 param["chr_id"] = "166"
 era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
 ```
-![wind](https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/u10m_wind.gif?raw=true)
+![Alt text](https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/u10m_wind.gif?raw=true)
 
 ### 2m Temperature (`t2m`)
 This parameter is the temperature of air at 2m above the surface of land, sea or in-land waters. This parameter has units of kelvin (K). Temperature measured in kelvin can be converted to degrees Celsius (°C) by subtracting 273.15.
