@@ -287,6 +287,9 @@ param["out_name"] = "snow"
 param["chr_id"] = "144"
 era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
 ```
+<p align="center">
+  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/snow.gif?raw=true" alt="animated" />
+</p>
 ### Surface Solar Radiation Downwards (`swrd`)
 This parameter is the amount of solar radiation (also known as shortwave radiation) that reaches a horizontal plane at the surface of the Earth. This parameter comprises both direct and diffuse solar radiation.
 
