@@ -341,6 +341,10 @@ param["out_name"] = "swrd"
 param["chr_id"] = "169"
 era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
 ```
+<p align="center">
+  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/swrd?raw=true" alt="animated" />
+</p>
+
 ### Surface Thermal Radiation Downwards (`lwrd`)
 This parameter is the amount of thermal (also known as longwave or terrestrial) radiation emitted by the atmosphere and clouds that reaches a horizontal plane at the surface of the Earth.
 
@@ -389,3 +393,6 @@ param["out_name"] = "lwrd"
 param["chr_id"] = "175"
 era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
 ```
+<p align="center">
+  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/lwrd?raw=true" alt="animated" />
+</p>
