@@ -28,23 +28,15 @@ Journal article describing ERA5.
 ## Downloading the forcing raw data
 First, we need to download the necessary raw data. This can be done with a python API for the following fields
 
-10m_u_component_of_wind 
-
-10m_v_component_of_wind 
-
-2m_dewpoint_temperature 
-
-2m_temperature 
-
-mean_sea_level_pressure 
-
-surface_solar_radiation_downwards 
-
-surface_thermal_radiation_downwards 
-
-total_precipitation 
-
-snowfall
+- [ ] 10 m $u-$ component of wind, [10m_u_component_of_wind](https://codes.ecmwf.int/grib/param-db/165)
+- [ ] 10 m $v-$ component of wind, [10m_v_component_of_wind](https://codes.ecmwf.int/grib/param-db/166)
+- [ ] 2 m temperature, [2m_temperature](https://codes.ecmwf.int/grib/param-db/167)
+- [ ] 2 m dewpoint temperature, [2m_dewpoint_temperature](https://codes.ecmwf.int/grib/param-db/168)
+- [ ] Mean sea level pressure, [mean_sea_level_pressure](https://codes.ecmwf.int/grib/param-db/151)
+- [ ] Surface short-wave (solar) radiation downwards, [surface_solar_radiation_downwards](https://codes.ecmwf.int/grib/param-db/169)
+- [ ] Surface long-wave (thermal) radiation downwards, [surface_thermal_radiation_downwards](https://codes.ecmwf.int/grib/param-db/175)
+- [ ] Total precipitation, [total_precipitation](https://codes.ecmwf.int/grib/param-db/228)
+- [ ] Snowfall, [snowfall](https://codes.ecmwf.int/grib/param-db/144)
 
 
 
