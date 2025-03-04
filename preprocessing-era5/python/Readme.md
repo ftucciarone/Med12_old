@@ -142,7 +142,7 @@ param["chr_id"] = "166"
 era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
 ```
 <p align="center">
-  <img src="[demo.gif](https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/u10m_wind.gif?raw=true)" alt="animated" />
+  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/u10m_wind.gif?raw=true" alt="animated" />
 </p>
 ![Alt text](https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/u10m_wind.gif?raw=true)
 
