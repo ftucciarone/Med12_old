@@ -240,7 +240,7 @@ param["chr_id"] = "228"
 era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
 ```
 <p align="center">
-  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/precipitation.gif?raw=true" alt="animated" />
+  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/total_precip.gif?raw=true" alt="animated" />
 </p>
 
 ### Snowfall (`snow`)  
@@ -289,7 +289,7 @@ param["chr_id"] = "144"
 era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
 ```
 <p align="center">
-  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/snow.gif?raw=true" alt="animated" />
+  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/snowfll.gif?raw=true" alt="animated" />
 </p>
 
 ### Surface Solar Radiation Downwards (`swrd`)
