@@ -219,7 +219,7 @@ param = {
          "nts": 1,
          "nx": 1440,
          "ny": 721,
-         "daymean": False,
+         "daymean": True,
          "units_change": {
                           "change": True,
                           "ucf": 3.6          
@@ -268,7 +268,7 @@ param = {
          "nts": 1,
          "nx": 1440,
          "ny": 721,
-         "daymean": False,
+         "daymean": True,
          "units_change": {
                           "change": True,
                           "ucf": 3.6
@@ -321,7 +321,7 @@ param = {
          "nts": 1,
          "nx": 1440,
          "ny": 721,
-         "daymean": False,
+         "daymean": True,
          "units_change": {
                           "change": True,
                           "ucf": 3600
@@ -373,7 +373,7 @@ param = {
          "nts": 1,
          "nx": 1440,
          "ny": 721,
-         "daymean": False,
+         "daymean": True,
          "units_change": {
                           "change": True,
                           "ucf": 3600
