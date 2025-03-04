@@ -48,8 +48,32 @@ import json
 # Directories
 dirs = json.load( open('directories.json') )
 ```
+## Downloading the forcing raw data
+First, we need to download the necessary raw data. This can be done with a python API for the following fields
+
+10m_u_component_of_wind 
+
+10m_v_component_of_wind 
+
+2m_dewpoint_temperature 
+
+2m_temperature 
+
+mean_sea_level_pressure 
+
+surface_solar_radiation_downwards 
+
+surface_thermal_radiation_downwards 
+
+total_precipitation 
+
+snowfall
 
 
+
+
+
+## Process the raw data
 ### Parameters dictionary for the processing
 Refer to [ERA5 data documentation](https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation) page to understand where to find the parameters for this dictionary
 ```python
