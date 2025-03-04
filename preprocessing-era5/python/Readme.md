@@ -342,7 +342,7 @@ param["chr_id"] = "169"
 era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
 ```
 <p align="center">
-  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/swrd?raw=true" alt="animated" />
+  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/swrd.gif?raw=true" alt="animated" />
 </p>
 
 ### Surface Thermal Radiation Downwards (`lwrd`)
@@ -394,5 +394,5 @@ param["chr_id"] = "175"
 era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
 ```
 <p align="center">
-  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/lwrd?raw=true" alt="animated" />
+  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/lwrd.gif?raw=true" alt="animated" />
 </p>
