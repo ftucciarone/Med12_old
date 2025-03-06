@@ -12,7 +12,7 @@ def era5_process(param, dirs, s_year, s_month, e_year, e_month, cleanup=False):
                  "var_name" : str,                 # Variable ID
                  "out_name" : str,                 # Output name of the variable
                  "chr_id" : str,                   # Character version of numerical ID
-                 "nts" : int,                      # Number of time steps
+                 "nts" : int,                      # Number of time steps per day
                  "nx" : int,                       # Dimensions in x
                  "ny" : int                        # Dimensions in y
                  "daymean": bool,                  # Flag to average over one day
