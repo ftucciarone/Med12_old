@@ -65,7 +65,7 @@ visit the listed website and accept the license(s), then retry.
 
 ### Basic python sript to download the data
 ```python
-#!/usr/bin/python
+#!/usr/bin/env python3
 import cdsapi
 client = cdsapi.Client()
 dataset = "reanalysis-era5-single-levels"
