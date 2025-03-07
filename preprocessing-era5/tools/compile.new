@@ -4,35 +4,50 @@ set -x
 COMP="ifort"
 NCDF=/opt/intel/netcdf-c-4.7.4-f-4.5.3-impi
 ADD=""
+#
+# Netcdf stuff: to know how to add NetCDF links just run the command "nc-config --all"
+#               and then take the following entries:
+#               --fflags
+#               --flink
+#
+#  --fflags    -> -I/usr/local/include -I/usr/local/include
+#  --flibs     -> -L/usr/local/Cellar/netcdf-fortran/4.6.1/lib -lnetcdff
+#
+#
+nc_config__fflags="-I/home/ftucciar/nemo-dep/installs/include -I/home/ftucciar/nemo-dep/installs/include -I/usr/local/include "
+nc_config__flibs="-L/home/ftucciar/nemo-dep/installs/lib -lnetcdff -Wl,-rpath,/home/ftucciar/nemo-dep/installs/lib -L/home/ftucciar/nemo-dep/installs/lib -lnetcdf -lhdf5_hl -lhdf5 -lz -lcurl -lnetcdf -lnetcdff -ldl -lm "
+
+COMP="gfortran -Ofast -fbounds-check -Wall -Wno-uninitialized -ffree-line-length-512 "
+
 
 str=""
 for f in merge.F90 handlerr.F90; do
-   $COMP -c -g -I $NCDF/include $f || exit -1
+   $COMP -c -g ${nc_config__fflags} $f || exit -1
    str="$str `echo $f | cut -d. -f1`.o"
 done
 
-$COMP -g $str -L$NCDF/lib -lnetcdff $ADD -o merge.x
+$COMP -g $str ${nc_config__flibs} $ADD -o merge.x
 
 str=""
 for f in merge_prec.F90 handlerr.F90; do
-   $COMP -c -g -I $NCDF/include $f || exit -1
+   $COMP -c -g ${nc_config__fflags} $f || exit -1
    str="$str `echo $f | cut -d. -f1`.o"
 done
 
-$COMP -g $str -L$NCDF/lib -lnetcdff $ADD -o merge_prec.x
+$COMP -g $str ${nc_config__flibs} $ADD -o merge_prec.x
 
 str=""
 for f in merge_rad.F90 handlerr.F90; do
-   $COMP -c -g -I $NCDF/include $f || exit -1
+   $COMP -c -g ${nc_config__fflags} $f || exit -1
    str="$str `echo $f | cut -d. -f1`.o"
 done
 
-$COMP -g $str -L$NCDF/lib -lnetcdff $ADD -o merge_rad.x
+$COMP -g $str ${nc_config__flibs} $ADD -o merge_rad.x
 
 str=""
 for f in read_field2st.F90 write_field2st.F90 td2qs.F90 handlerr.F90; do
-   $COMP -c -g -I $NCDF/include $f || exit -1
+   $COMP -c -g ${nc_config__fflags} $f || exit -1
    str="$str `echo $f | cut -d. -f1`.o"
 done
 
-$COMP -g $str -L$NCDF/lib -lnetcdff $ADD -o td2qs.x
+$COMP -g $str ${nc_config__flibs} $ADD -o td2qs.x
