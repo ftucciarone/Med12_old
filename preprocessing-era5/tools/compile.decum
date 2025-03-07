@@ -3,20 +3,35 @@ set -x
 
 COMP="ifort"
 NCDF=/opt/intel/netcdf-c-4.7.4-f-4.5.3-impi
+#
+# Netcdf stuff: to know how to add NetCDF links just run the command "nc-config --all"
+#               and then take the following entries:
+#               --fflags
+#               --flink
+#
+#  --fflags    -> -I/usr/local/include -I/usr/local/include
+#  --flibs     -> -L/usr/local/Cellar/netcdf-fortran/4.6.1/lib -lnetcdff
+#
+#
+nc_config__fflags="-I/home/ftucciar/nemo-dep/installs/include -I/home/ftucciar/nemo-dep/installs/include -I/usr/local/include "
+nc_config__flibs="-L/home/ftucciar/nemo-dep/installs/lib -lnetcdff -Wl,-rpath,/home/ftucciar/nemo-dep/installs/lib -L/home/ftucciar/nemo-dep/installs/lib -lnetcdf -lhdf5_hl -lhdf5 -lz -lcurl -lnetcdf -lnetcdff -ldl -lm "
+
+COMP="gfortran -Ofast -fbounds-check -Wall -Wno-uninitialized -ffree-line-length-512 "
+
 
 str=""
 for f in decum.F90 handlerr.F90; do
-   $COMP -c -g -I $NCDF/include $f || exit -1
+   $COMP -c -g ${nc_config__fflags} $f || exit -1
    str="$str `echo $f | cut -d. -f1`.o"
 done
 
-$COMP -g $str -L$NCDF/lib -lnetcdff -o decum.x
+$COMP -g $str ${nc_config__flibs} -o decum.x
 
 
 str=""
 for f in decum2.F90 handlerr.F90; do
-   $COMP -c -g -I $NCDF/include $f || exit -1
+   $COMP -c -g ${nc_config__fflags} $f || exit -1
    str="$str `echo $f | cut -d. -f1`.o"
 done
 
-$COMP -g $str -L$NCDF/lib -lnetcdff -o decum2.x
+$COMP -g $str ${nc_config__flibs} -o decum2.x
