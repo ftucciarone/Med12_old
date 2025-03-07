@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 import cdsapi
 client = cdsapi.Client()
 dataset = "reanalysis-era5-single-levels"
