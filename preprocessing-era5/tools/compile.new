@@ -4,6 +4,7 @@ set -x
 COMP="ifort"
 NCDF=/opt/intel/netcdf-c-4.7.4-f-4.5.3-impi
 ADD=""
+
 #
 # Netcdf stuff: to know how to add NetCDF links just run the command "nc-config --all"
 #               and then take the following entries:
@@ -14,8 +15,8 @@ ADD=""
 #  --flibs     -> -L/usr/local/Cellar/netcdf-fortran/4.6.1/lib -lnetcdff
 #
 #
-nc_config__fflags="-I/home/ftucciar/nemo-dep/installs/include -I/home/ftucciar/nemo-dep/installs/include -I/usr/local/include "
-nc_config__flibs="-L/home/ftucciar/nemo-dep/installs/lib -lnetcdff -Wl,-rpath,/home/ftucciar/nemo-dep/installs/lib -L/home/ftucciar/nemo-dep/installs/lib -lnetcdf -lhdf5_hl -lhdf5 -lz -lcurl -lnetcdf -lnetcdff -ldl -lm "
+nc_config__fflags="-I/usr/include "
+nc_config__flibs="-L/usr/lib/x86_64-linux-gnu -lnetcdff -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -lnetcdf -lnetcdf -ldl -lm"
 
 COMP="gfortran -Ofast -fbounds-check -Wall -Wno-uninitialized -ffree-line-length-512 "
 
