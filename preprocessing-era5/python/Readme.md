@@ -399,4 +399,4 @@ era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
 
 
 #
-https://github.com/ftucciarone/Med12/blob/c6f489633bd606f16a767a00ea3333fc11039eb3/preprocessing-era5/python/era5_process.py#L1
+https://github.com/ftucciarone/Med12/blob/c6f489633bd606f16a767a00ea3333fc11039eb3/preprocessing-era5/python/era5_process.py#L1-L147
