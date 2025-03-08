@@ -1,4 +1,4 @@
-#!/bin/ksh
+#!/bin/sh
 set -x
 
 COMP="ifort"
