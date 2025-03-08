@@ -48,17 +48,13 @@ First, we need to download the necessary raw data. This can be done with a pytho
 We have three main directories (along with a `home` directory): 
 - `work`: here we store temporary and intermediate files;
 - `grib`: here we store the raw `.grib` files from the download;
-- `arch`: here we store the processed files, those that will be fed to NEMO.
+- `arch`: here we store the processed files, those that will be fed to NEMO;
+- `figs`: here we store postprocessed images made with `makegif.py`.
  
 These directories are set in the `.json` file `directories.json` with the following syntax:
-```json
-{
-    "home": "/home/ftucciar",
-    "work": "/home/ftucciar/Med12/preprocessing-era5/work",
-    "grib": "/home/ftucciar/Med12/preprocessing-era5/grib",
-    "arch": "/home/ftucciar/Med12/preprocessing-era5/archive"
-}
-```
+
+https://github.com/ftucciarone/Med12/blob/0c60baaae4cfdeec9b4ef27d86b35d11ade75f03/preprocessing-era5/python/directories.json#L1-L10
+
 and are accessed in each processing file as
 ```python
 import json
