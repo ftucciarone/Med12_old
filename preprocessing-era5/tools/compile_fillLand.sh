@@ -22,8 +22,8 @@ COMP="gfortran -Ofast -fbounds-check -Wall -Wno-uninitialized -ffree-line-length
 
 str=""
 for f in master_flandr.F90 read_field2dt_fillLand.F90 read_msk.F90 handlerr.F90 write_field2dt_fillLand.F90 fill_land.F90 ; do
-        $COMP -c -I$NCDF/include $f
+        $COMP -c ${nc_config__fflags} $f
 str="$str `echo $f | cut -d. -f1`.o"
 done
 
-$COMP $str -o flandR.x -L$NCDF/lib -lnetcdf
+$COMP $str -o flandR.x ${nc_config__fflags} -lnetcdf
