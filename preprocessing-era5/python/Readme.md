@@ -53,7 +53,7 @@ We have three main directories (along with a `home` directory):
  
 These directories are set in the `.json` file `directories.json` with the following syntax:
 
-https://github.com/ftucciarone/Med12/blob/0c60baaae4cfdeec9b4ef27d86b35d11ade75f03/preprocessing-era5/python/directories.json#L1-L10
+https://github.com/ftucciarone/Med12/blob/0c60baaae4cfdeec9b4ef27d86b35d11ade75f03/preprocessing-era5/python/directories.json#L1-L7
 
 and are accessed in each processing file as
 ```python
