@@ -25,8 +25,8 @@ param = {
                          },
          "maskland": {
                       "mask": True,
-                      "exec": "/home/ftucciar/Med12/preprocessing-era5/tools/scr2/flandR.x",
-                      "maskfile": "/home/ftucciar/Med12/preprocessing-era5/tools/lsm_ERA5_0.25.nc"
+                      "exec": "/home/ftucciar/Stockage12T/Med12/preprocessing-era5/tools/flandR.x",
+                      "maskfile": "/home/ftucciar/Stockage12T/Med12/preprocessing-era5/tools/lsm_ERA5_0.25.nc"
                      }
         }
 
