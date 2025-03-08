@@ -396,3 +396,7 @@ era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
 <p align="center">
   <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/lwrd.gif?raw=true" alt="animated" />
 </p>
+
+
+#
+https://github.com/ftucciarone/Med12/blob/c6f489633bd606f16a767a00ea3333fc11039eb3/preprocessing-era5/python/era5_process.py#L1
