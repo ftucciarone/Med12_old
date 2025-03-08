@@ -1,6 +1,7 @@
 {
-    "home": "~/",
-    "work": "~/Med12/preprocessing-era5/work",
-    "grib": "~/Med12/preprocessing-era5/grib",
-    "arch": "~/Med12/preprocessing-era5/archive"
+    "home": "/home/ftucciar",
+    "work": "/home/ftucciar/Med12/preprocessing-era5/work",
+    "grib": "/home/ftucciar/Med12/preprocessing-era5/grib",
+    "arch": "/home/ftucciar/Med12/preprocessing-era5/archive",
+    "figs": "/home/ftucciar/Med12/preprocessing-era5/figures"
 }
