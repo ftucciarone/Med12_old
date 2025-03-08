@@ -92,55 +92,8 @@ param = {
 ### 10m wind $u,v-$ components (`u10m` and `v10m`)
 These parameter are the [eastward](https://codes.ecmwf.int/grib/param-db/165) ($u$) and [northward](https://codes.ecmwf.int/grib/param-db/166) ($v$) components of the 10m wind. They are the horizontal speed of air moving towards the east and the north, respectively, at a height of ten metres above the surface of the Earth, in metres per second.
 
-```python
-# -*- coding: utf-8 -*-
-import json
-from era5_process import era5_process
+https://github.com/ftucciarone/Med12/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_10m_components_of_wind.py#L1-L50
 
-# Directories
-dirs = json.load( open('directories.json') )
-
-# Parameters of the input field
-param = {
-         # Parameters depending on the field processed
-         # Refer to: https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation 
-         #
-         "long_name": "Variable_name_in_CDS", # Variable name in CDS, e.g. '10m_u_component_of_wind'
-         "var_name": "ShortName",             # ShortName, e.g. '10u'
-         "out_name": "output_name",           # Output name of the variable
-         "chr_id": "paramID",                 # paramID, e.g. '165'
-         # Common parameters
-         "nts": 24,
-         "nx": 1440,
-         "ny": 721,
-         "daymean": False,
-         "units_change": {
-                          "change": False,
-                          "ucf": 1
-                         },
-         "maskland": {
-                      "mask": True,
-                      "exec": "/home/ftucciar/Med12/preprocessing-era5/tools/scr2/flandR.x",
-                      "maskfile": "/home/ftucciar/Med12/preprocessing-era5/tools/lsm_ERA5_0.25.nc"
-                     }
-        }
-# %%
-# Parameters of the input field
-# Refer to: https://apps.ecmwf.int/codes/grib/param-db/165
-param["long_name"] = "10m_u_component_of_wind"
-param["var_name"] = "10u"
-param["out_name"] = "u10m"
-param["chr_id"] = "165"
-era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
-
-# Parameters of the input field
-# Refer to: https://apps.ecmwf.int/codes/grib/param-db/166
-param["long_name"] = "10m_v_component_of_wind"
-param["var_name"] = "10v"
-param["out_name"] = "v10m"
-param["chr_id"] = "166"
-era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
-```
 <p align="center">
   <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/u10m_wind.gif?raw=true" alt="animated" />
   <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/v10m_wind.gif?raw=true" alt="animated" />
@@ -149,47 +102,9 @@ era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
 
 ### 2m Temperature (`t2m`)
 This parameter is the temperature of air at 2m above the surface of land, sea or in-land waters. This parameter has units of kelvin (K). Temperature measured in kelvin can be converted to degrees Celsius (°C) by subtracting 273.15.
-```fortran
-# -*- coding: utf-8 -*-
-import json
-from era5_process import era5_process
 
-# Directories
-dirs = json.load( open('directories.json') )
+https://github.com/ftucciarone/Med12/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_2m_temperature.py#L1-L41
 
-# Parameters of the input field
-param = {
-         # Parameters depending on the field processed
-         # Refer to: https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation 
-         #
-         "long_name": "Variable_name_in_CDS", # Variable name in CDS, e.g. '2m_temperature'
-         "var_name": "ShortName",             # ShortName, e.g. r"\2t"
-         "out_name": "output_name",           # Output name of the variable, e.g. 't2m'
-         "chr_id": "paramID",                 # paramID, e.g. '167'
-         # Common parameters
-         "nts": 24,
-         "nx": 1440,
-         "ny": 721,
-         "daymean": False,
-         "units_change": {
-                          "change": False,
-                          "ucf": 1
-                         },
-         "maskland": {
-                      "mask": True,
-                      "exec": "/home/ftucciar/Med12/preprocessing-era5/tools/scr2/flandR.x",
-                      "maskfile": "/home/ftucciar/Med12/preprocessing-era5/tools/lsm_ERA5_0.25.nc"
-                     }
-        }
-# %%
-# Parameters of the input field
-# Refer to: https://apps.ecmwf.int/codes/grib/param-db/167
-param["long_name"] = "2m_temperature"
-param["var_name"] = r"\2t"
-param["out_name"] = "t2m"
-param["chr_id"] = "167"
-era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
-```
 <p align="center">
   <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/t2m.gif?raw=true" alt="animated" />
 </p>
@@ -198,47 +113,10 @@ era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
 This parameter is the accumulated liquid and frozen water, comprising rain and snow, that falls to the Earth's surface. It is the sum of large-scale precipitation and convective precipitation. Large-scale precipitation is generated by the cloud scheme in the ECMWF Integrated Forecasting System (IFS). The cloud scheme represents the formation and dissipation of clouds and large-scale precipitation due to changes in atmospheric quantities (such as pressure, temperature and moisture) predicted directly by the IFS at spatial scales of the [grid box](https://confluence.ecmwf.int/display/CKB/Model+grid+box+and+time+step) or larger. Convective precipitation is generated by the convection scheme in the IFS, which represents convection at spatial scales smaller than the grid box. [See further information](https://confluence.ecmwf.int/display/CKB/Convective+and+large-scale+precipitation). This parameter does not include fog, dew or the precipitation that evaporates in the atmosphere before it lands at the surface of the Earth.
 
 This parameter is the total amount of [water accumulated over a particular time period which depends on the data extracted](https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation#ERA5:datadocumentation-Meanrates/fluxesandaccumulations). The units of this parameter are depth in metres of water equivalent. It is the depth the water would have if it were spread evenly over the grid box.
-```python
-# -*- coding: utf-8 -*-
-import json
-from era5_process import era5_process
 
-# Directories
-dirs = json.load( open('directories.json') )
 
-# Parameters of the input field
-param = {
-         # Parameters depending on the field processed
-         # Refer to: https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation 
-         #
-         "long_name": "Variable_name_in_CDS", # Variable name in CDS, e.g. '10m_u_component_of_wind'
-         "var_name": "ShortName",             # ShortName, e.g. '10u'
-         "out_name": "output_name",           # Output name of the variable
-         "chr_id": "paramID",                 # paramID, e.g. '165'
-         # Common parameters
-         "nts": 1,
-         "nx": 1440,
-         "ny": 721,
-         "daymean": True,
-         "units_change": {
-                          "change": True,
-                          "ucf": 3.6          
-                         },
-         "maskland": {
-                      "mask": True,
-                      "exec": "/home/ftucciar/Med12/preprocessing-era5/tools/scr2/flandR.x",
-                      "maskfile": "/home/ftucciar/Med12/preprocessing-era5/tools/lsm_ERA5_0.25.nc"
-                     }
-        }
-# %%
-# Parameters of the input field
-# Refer to: https://apps.ecmwf.int/codes/grib/param-db/228
-param["long_name"] = "total_precipitation"
-param["var_name"] = "tp"
-param["out_name"] = "precip"
-param["chr_id"] = "228"
-era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
-```
+https://github.com/ftucciarone/Med12/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_total_precipitation.py#L1-L41
+
 <p align="center">
   <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/total_precip.gif?raw=true" alt="animated" />
 </p>
@@ -247,47 +125,9 @@ era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
 This parameter is the accumulated snow that falls to the Earth's surface. It is the sum of large-scale snowfall and convective snowfall. Large-scale snowfall is generated by the cloud scheme in the ECMWF Integrated Forecasting System (IFS). The cloud scheme represents the formation and dissipation of clouds and large-scale precipitation due to changes in atmospheric quantities (such as pressure, temperature and moisture) predicted directly by the IFS at spatial scales of the [grid box](https://confluence.ecmwf.int/display/CKB/Model+grid+box+and+time+step) or larger. Convective snowfall is generated by the convection scheme in the IFS, which represents convection at spatial scales smaller than the grid box. See further information.
 
 This parameter is the total amount of [water accumulated over a particular time period which depends on the data extracted](https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation#ERA5:datadocumentation-Meanrates/fluxesandaccumulations) The units of this parameter are depth in metres of water equivalent. It is the depth the water would have if it were spread evenly over the grid box.
-```python
-# -*- coding: utf-8 -*-
-import json
-from era5_process import era5_process
 
-# Directories
-dirs = json.load( open('directories.json') )
+https://github.com/ftucciarone/Med12/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_snowfall.py#L1-L41
 
-# Parameters of the input field
-param = {
-         # Parameters depending on the field processed
-         # Refer to: https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation 
-         #
-         "long_name": "Variable_name_in_CDS", # Variable name in CDS, e.g. '10m_u_component_of_wind'
-         "var_name": "ShortName",             # ShortName, e.g. '10u'
-         "out_name": "output_name",           # Output name of the variable
-         "chr_id": "paramID",                 # paramID, e.g. '165'
-         # Common parameters
-         "nts": 1,
-         "nx": 1440,
-         "ny": 721,
-         "daymean": True,
-         "units_change": {
-                          "change": True,
-                          "ucf": 3.6
-                         },
-         "maskland": {
-                      "mask": True,
-                      "exec": "/home/ftucciar/Med12/preprocessing-era5/tools/scr2/flandR.x",
-                      "maskfile": "/home/ftucciar/Med12/preprocessing-era5/tools/lsm_ERA5_0.25.nc"
-                     }
-        }
-# %%
-# Parameters of the input field
-# Refer to: https://apps.ecmwf.int/codes/grib/param-db/144
-param["long_name"] = "snowfall"
-param["var_name"] = "sf"
-param["out_name"] = "snow"
-param["chr_id"] = "144"
-era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
-```
 <p align="center">
   <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/snowfll.gif?raw=true" alt="animated" />
 </p>
@@ -300,47 +140,9 @@ Radiation from the Sun (solar, or shortwave, radiation) is partly reflected back
 To a reasonably good approximation, this parameter is the model equivalent of what would be measured by a pyranometer (an instrument used for measuring solar radiation) at the surface. However, care should be taken when comparing model parameters with observations, because observations are often local to a particular point in space and time, rather than representing averages over a [model grid box](https://confluence.ecmwf.int/display/CKB/Model+grid+box+and+time+step).
 
 This parameter [is accumulated over a particular time period which depends on the data extracted](https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation#ERA5:datadocumentation-Meanrates/fluxesandaccumulations). The units are joules per square metre (J m-2). To convert to watts per square metre (W m-2), the accumulated values should be divided by the accumulation period expressed in seconds.
-```python
-# -*- coding: utf-8 -*-
-import json
-from era5_process import era5_process
 
-# Directories
-dirs = json.load( open('directories.json') )
+https://github.com/ftucciarone/Med12/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_surface_solar_radiation_downwards.py#L1-L41
 
-# Parameters of the input field
-param = {
-         # Parameters depending on the field processed
-         # Refer to: https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation 
-         #
-         "long_name": "Variable_name_in_CDS", # Variable name in CDS, e.g. '10m_u_component_of_wind'
-         "var_name": "ShortName",             # ShortName, e.g. '10u'
-         "out_name": "output_name",           # Output name of the variable
-         "chr_id": "paramID",                 # paramID, e.g. '165'
-         # Common parameters
-         "nts": 1,
-         "nx": 1440,
-         "ny": 721,
-         "daymean": True,
-         "units_change": {
-                          "change": True,
-                          "ucf": 3600
-                         },
-         "maskland": {
-                      "mask": True,
-                      "exec": "/home/ftucciar/Med12/preprocessing-era5/tools/scr2/flandR.x",
-                      "maskfile": "/home/ftucciar/Med12/preprocessing-era5/tools/lsm_ERA5_0.25.nc"
-                     }
-        }
-# %%
-# Parameters of the input field
-# Refer to: https://apps.ecmwf.int/codes/grib/param-db/169
-param["long_name"] = "surface_solar_radiation_downwards"
-param["var_name"] = "ssrd"
-param["out_name"] = "swrd"
-param["chr_id"] = "169"
-era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
-```
 <p align="center">
   <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/swrd.gif?raw=true" alt="animated" />
 </p>
@@ -351,48 +153,9 @@ This parameter is the amount of thermal (also known as longwave or terrestrial) 
 The surface of the Earth emits thermal radiation, some of which is absorbed by the atmosphere and clouds. The atmosphere and clouds likewise emit thermal radiation in all directions, some of which reaches the surface (represented by this parameter). See [further documentation](https://www.ecmwf.int/sites/default/files/elibrary/2015/18490-radiation-quantities-ecmwf-model-and-mars.pdf).
 
 This parameter [is accumulated over a particular time period which depends on the data extracted](https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation#ERA5:datadocumentation-Meanrates/fluxesandaccumulations). The units are joules per square metre (J m-2). To convert to watts per square metre (W m-2), the accumulated values should be divided by the accumulation period expressed in seconds.
-```python
-[comment]: <> ![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
-# -*- coding: utf-8 -*-
-import json
-from era5_process import era5_process
 
-# Directories
-dirs = json.load( open('directories.json') )
+https://github.com/ftucciarone/Med12/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_surface_thermal_radiation_downwards.py#L1-L41
 
-# Parameters of the input field
-param = {
-         # Parameters depending on the field processed
-         # Refer to: https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation 
-         #
-         "long_name": "Variable_name_in_CDS", # Variable name in CDS, e.g. '10m_u_component_of_wind'
-         "var_name": "ShortName",             # ShortName, e.g. '10u'
-         "out_name": "output_name",           # Output name of the variable
-         "chr_id": "paramID",                 # paramID, e.g. '165'
-         # Common parameters
-         "nts": 1,
-         "nx": 1440,
-         "ny": 721,
-         "daymean": True,
-         "units_change": {
-                          "change": True,
-                          "ucf": 3600
-                         },
-         "maskland": {
-                      "mask": True,
-                      "exec": "/home/ftucciar/Med12/preprocessing-era5/tools/scr2/flandR.x",
-                      "maskfile": "/home/ftucciar/Med12/preprocessing-era5/tools/lsm_ERA5_0.25.nc"
-                     }
-        }
-# %%
-# Parameters of the input field
-# Refer to: https://apps.ecmwf.int/codes/grib/param-db/175
-param["long_name"] = "surface_thermal_radiation_downwards"
-param["var_name"] = "strd"
-param["out_name"] = "lwrd"
-param["chr_id"] = "175"
-era5_process(param, dirs, 2020, 1, 2020, 1, cleanup=False)
-```
 <p align="center">
   <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/lwrd.gif?raw=true" alt="animated" />
 </p>
