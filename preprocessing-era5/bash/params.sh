@@ -46,7 +46,7 @@ flexe=$tools_dir/flandR.x
 # CDO and NC specification
 i_know_them=1
 if [ $i_know_them == 1 ]; then
-	cdo=/usr/local/bin/cdo
+   cdo=/usr/local/bin/cdo
    ncap2=/usr/local/bin/ncap2
    ncatted=/usr/local/bin/ncatted
    ncbo=/usr/local/bin/ncbo
