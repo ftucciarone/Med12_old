@@ -1,0 +1,8 @@
+step 1
+download using fetch* script (which in turns uses run_sed*)
+
+step 2
+process using the two proc_fld* scripts (one for analysis fields one for forecast fields)
+
+step 3
+landfilling with landfilling*script
