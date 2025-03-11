@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Temporal parameters 
 #
@@ -10,8 +10,8 @@
 #   note: to do a single month you set me=ms
 #         not me=ms+1, as we always go to the 
 #         end of the month (me)
-ys=2021
-ye=2021
+ys=2020
+ye=2020
 ms=1
 me=1
 
@@ -29,11 +29,12 @@ ny=721
 fland=0
 
 # Directories set
-base_dir=
-grib_dir=
-work_dir=
-arch_dir=
-tools_dir=
+base_dir=/home/ftucciar/Stockage12T/Med12/preprocessing-era5/
+grib_dir=/home/ftucciar/Stockage12T/Med12/preprocessing-era5/grib
+run_dir=/home/ftucciar/Stockage12T/Med12/preprocessing-era5/run
+work_dir=/home/ftucciar/Stockage12T/Med12/preprocessing-era5/work
+arch_dir=/home/ftucciar/Stockage12T/Med12/preprocessing-era5/archive
+tools_dir=/home/ftucciar/Stockage12T/Med12/preprocessing-era5/tools
 
 # 
 landseamask=$tools_dir/lsm_ERA5_0.25.nc
@@ -43,37 +44,40 @@ mergeprec_exe=$tools_dir/merge_prec.x
 qs_exe=$tools_dir/td2qs.x
 flexe=$tools_dir/flandR.x
 
+# Dateutils
+dateutils=/usr/bin/dateutils
+datediff=/usr/bin/dateutils.ddiff
+
+
 # CDO and NC specification
 i_know_them=1
 if [ $i_know_them == 1 ]; then
-   cdo=/usr/local/bin/cdo
-   ncap2=/usr/local/bin/ncap2
-   ncatted=/usr/local/bin/ncatted
-   ncbo=/usr/local/bin/ncbo
-   ncchecker=/usr/local/bin/ncchecker
-   ncclimo=/usr/local/bin/ncclimo
-   ncdiff=/usr/local/bin/ncdiff
-   ncdu=/usr/local/bin/ncdu
-   ncea=/usr/local/bin/ncea
-   ncecat=/usr/local/bin/ncecat
-   nces=/usr/local/bin/nces
-   ncflint=/usr/local/bin/ncflint
-   ncks=/usr/local/bin/ncks
-   ncra=/usr/local/bin/ncra
-   ncrcat=/usr/local/bin/ncrcat
-   ncremap=/usr/local/bin/ncremap
-   ncrename=/usr/local/bin/ncrename
-   ncview=/usr/local/bin/ncview
-   ncwa=/usr/local/bin/ncwa
-   ncz2psx=/usr/local/bin/ncz2psx
-
-   return
+   cdo=/usr/bin/cdo
+   ncap2=/usr/bin/ncap2
+   ncatted=/usr/bin/ncatted
+   ncbo=/usr/bin/ncbo
+   ncchecker=
+   ncclimo=/usr/bin/ncclimo
+   ncdiff=/usr/bin/ncdiff
+   ncdu=/usr/bin/ncdu
+   ncea=/usr/bin/ncea
+   ncecat=/usr/bin/ncecat
+   nces=/usr/bin/nces
+   ncflint=/usr/bin/ncflint
+   ncks=/usr/bin/ncks
+   ncra=/usr/bin/ncra
+   ncrcat=/usr/bin/ncrcat
+   ncremap=/usr/bin/ncremap
+   ncrename=/usr/bin/ncrename
+   ncview=/usr/bin/ncview
+   ncwa=/usr/bin/ncwa
+   ncz2psx=
 else
    cdo=$( which cdo )             || { echo "which cdo failed: check syntax, installation or specify the path."; exit ; }
    ncap2=$( which ncap2 )         || { echo "which ncap2 failed: check syntax, installation or specify the path."; exit ; }
    ncatted=$( which ncatted )     || { echo "which ncatted failed: check syntax, installation or specify the path."; exit ; }
    ncbo=$( which ncbo )           || { echo "which ncbo failed: check syntax, installation or specify the path."; exit ; }
-   ncchecker=$( which ncchecker ) || { echo "which ncchecker failed: check syntax, installation or specify the path."; exit ; }
+   #ncchecker=$( which ncchecker ) || { echo "which ncchecker failed: check syntax, installation or specify the path."; exit ; }
    ncclimo=$( which ncclimo )     || { echo "which ncclimo failed: check syntax, installation or specify the path."; exit ; }
    ncdiff=$( which ncdiff )       || { echo "which ncdiff failed: check syntax, installation or specify the path."; exit ; }
    ncdu=$( which ncdu )           || { echo "which ncdu failed: check syntax, installation or specify the path."; exit ; }
@@ -88,29 +92,51 @@ else
    ncrename=$( which ncrename )   || { echo "which ncrename failed: check syntax, installation or specify the path."; exit ; }
    ncview=$( which ncview )       || { echo "which ncview failed: check syntax, installation or specify the path."; exit ; }
    ncwa=$( which ncwa )           || { echo "which ncwa failed: check syntax, installation or specify the path."; exit ; }
-   ncz2psx=$( which ncz2psx )     || { echo "which ncz2psx failed: check syntax, installation or specify the path."; exit ; }
-
-   echo "cdo=$( which cdo )"
-   echo "ncap2=$( which ncap2 ) "
-   echo "ncatted=$( which ncatted ) "
-   echo "ncbo=$( which ncbo ) "
-   echo "ncchecker=$( which ncchecker ) "
-   echo "ncclimo=$( which ncclimo ) "
-   echo "ncdiff=$( which ncdiff ) "
-   echo "ncdu=$( which ncdu ) "
-   echo "ncea=$( which ncea ) "
-   echo "ncecat=$( which ncecat ) "
-   echo "nces=$( which nces ) "
-   echo "ncflint=$( which ncflint ) " 
-   echo "ncks=$( which ncks ) "
-   echo "ncra=$( which ncra ) "
-   echo "ncrcat=$( which ncrcat ) "
-   echo "ncremap=$( which ncremap ) "
-   echo "ncrename=$( which ncrename ) "
-   echo "ncview=$( which ncview ) "
-   echo "ncwa=$( which ncwa ) "
-   echo "ncz2psx=$( which ncz2psx ) "
-   
-   return
+   #ncz2psx=$( which ncz2psx )     || { echo "which ncz2psx failed: check syntax, installation or specify the path."; exit ; }
+   echo "   cdo=$( which cdo )"
+   echo "   ncap2=$( which ncap2 ) "
+   echo "   ncatted=$( which ncatted ) "
+   echo "   ncbo=$( which ncbo ) "
+   echo "   ncchecker=$( which ncchecker ) "
+   echo "   ncclimo=$( which ncclimo ) "
+   echo "   ncdiff=$( which ncdiff ) "
+   echo "   ncdu=$( which ncdu ) "
+   echo "   ncea=$( which ncea ) "
+   echo "   ncecat=$( which ncecat ) "
+   echo "   nces=$( which nces ) "
+   echo "   ncflint=$( which ncflint ) " 
+   echo "   ncks=$( which ncks ) "
+   echo "   ncra=$( which ncra ) "
+   echo "   ncrcat=$( which ncrcat ) "
+   echo "   ncremap=$( which ncremap ) "
+   echo "   ncrename=$( which ncrename ) "
+   echo "   ncview=$( which ncview ) "
+   echo "   ncwa=$( which ncwa ) "
+   echo "   ncz2psx=$( which ncz2psx ) "
 fi
+
+
+# Safety checks on directories
+if [ -z "${base_dir}" ]; then
+   base_dir=.
+fi
+if [ -z "${grib_dir}" ]; then
+   grib_dir=.
+fi
+if [ -z "${run_dir}" ]; then
+   run_dir=.
+fi
+if [ -z "${work_dir}" ]; then
+   work_dir=.
+fi
+if [ -z "${arch_dir}" ]; then
+   arch_dir=.
+fi
+if [ -z "${tools_dir}" ]; then
+   tools_dir=.
+fi
+
+
+
+
 
