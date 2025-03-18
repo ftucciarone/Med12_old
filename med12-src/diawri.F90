@@ -59,6 +59,10 @@ MODULE diawri
    USE diurnal_bulk    ! diurnal warm layer
    USE cool_skin       ! Cool skin
 
+
+   USE tlu
+   USE tludgns
+
    IMPLICIT NONE
    PRIVATE
 
@@ -589,12 +593,14 @@ CONTAINS
 
 
          ! Declare all the output fields as NETCDF variables
-
          !                                                                                      !!! nid_T : 3D
          CALL histdef( nid_T, "votemper", "Temperature"                        , "C"      ,   &  ! tn
             &          jpi, jpj, nh_T, ipk, 1, ipk, nz_T, 32, clop, zsto, zout )
          CALL histdef( nid_T, "vosaline", "Salinity"                           , "PSU"    ,   &  ! sn
             &          jpi, jpj, nh_T, ipk, 1, ipk, nz_T, 32, clop, zsto, zout )
+         CALL histdef( nid_T, "vorticity", "Vorticity"                         , "1/s"      ,   &  ! tn
+            &          jpi, jpj, nh_T, ipk, 1, ipk, nz_T, 32, clop, zsto, zout )
+
          IF(  .NOT.ln_linssh  ) THEN
             CALL histdef( nid_T, "vovvle3t", "Level thickness"                    , "m"      ,&  ! e3t_n
             &             jpi, jpj, nh_T, ipk, 1, ipk, nz_T, 32, clop, zsto, zout )
@@ -702,6 +708,10 @@ CONTAINS
          !                                                                                      !!! nid_U : 3D
          CALL histdef( nid_U, "vozocrtx", "Zonal Current"                      , "m/s"    ,   &  ! un
             &          jpi, jpj, nh_U, ipk, 1, ipk, nz_U, 32, clop, zsto, zout )
+         CALL histdef( nid_U, "nozocrtx", "Zonal Current noise"                , "m/s"    ,   &  ! un
+            &          jpi, jpj, nh_U, ipk, 1, ipk, nz_U, 32, clop, zsto, zout )
+
+         
          IF( ln_wave .AND. ln_sdw) THEN
             CALL histdef( nid_U, "sdzocrtx", "Stokes Drift Zonal Current"         , "m/s"    ,   &  ! usd
                &          jpi, jpj, nh_U, ipk, 1, ipk, nz_U, 32, clop, zsto, zout )
@@ -715,6 +725,9 @@ CONTAINS
          !                                                                                      !!! nid_V : 3D
          CALL histdef( nid_V, "vomecrty", "Meridional Current"                 , "m/s"    ,   &  ! vn
             &          jpi, jpj, nh_V, ipk, 1, ipk, nz_V, 32, clop, zsto, zout )
+         CALL histdef( nid_V, "nomecrty", "Meridional Current noise"           , "m/s"    ,   &  ! vn
+            &          jpi, jpj, nh_V, ipk, 1, ipk, nz_V, 32, clop, zsto, zout )
+
          IF( ln_wave .AND. ln_sdw) THEN
             CALL histdef( nid_V, "sdmecrty", "Stokes Drift Meridional Current"    , "m/s"    ,   &  ! vsd
                &          jpi, jpj, nh_V, ipk, 1, ipk, nz_V, 32, clop, zsto, zout )
@@ -762,7 +775,10 @@ CONTAINS
          WRITE(numout,*) 'dia_wri : write model outputs in NetCDF files at ', kt, 'time-step'
          WRITE(numout,*) '~~~~~~ '
       ENDIF
-
+    if (Allocated(tvor)) THEN
+      CALL histwrite( nid_T, "vorticity", it, tvor , ndim_T , ndex_T  )   ! heat content
+    end if
+      
       IF( .NOT.ln_linssh ) THEN
          CALL histwrite( nid_T, "votemper", it, tsn(:,:,:,jp_tem) * e3t_n(:,:,:) , ndim_T , ndex_T  )   ! heat content
          CALL histwrite( nid_T, "vosaline", it, tsn(:,:,:,jp_sal) * e3t_n(:,:,:) , ndim_T , ndex_T  )   ! salt content
@@ -842,9 +858,11 @@ CONTAINS
 #endif
 
       CALL histwrite( nid_U, "vozocrtx", it, un            , ndim_U , ndex_U )    ! i-current
+      !CALL histwrite( nid_U, "nozocrtx", it, unoi          , ndim_U , ndex_U )    ! i-current
       CALL histwrite( nid_U, "sozotaux", it, utau          , ndim_hU, ndex_hU )   ! i-wind stress
 
       CALL histwrite( nid_V, "vomecrty", it, vn            , ndim_V , ndex_V  )   ! j-current
+      !CALL histwrite( nid_V, "nomecrty", it, vnoi          , ndim_V , ndex_V  )   ! j-current
       CALL histwrite( nid_V, "sometauy", it, vtau          , ndim_hV, ndex_hV )   ! j-wind stress
 
       IF( ln_zad_Aimp ) THEN
