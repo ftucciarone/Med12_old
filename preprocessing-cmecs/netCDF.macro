@@ -1,0 +1,49 @@
+#
+# Netcdf stuff: to know how to add NetCDF links just run the command "nc-config --all"
+#               and then take the following entries:
+#               --fflags
+#               --flink
+#
+
+#nc_config__which=/usr/bin/nc-config
+nc_config__which=$( which nc-config ) || { echo "which nc-config failed: check syntax or specify directly the path."; exit ; }
+nc_config__cc=$( $nc_config__which --cc) || { echo "nc-config --cc failed:check syntax or specify the compiler."; exit ; }
+nc_config__prefix=$( $nc_config__which --prefix) || { echo "nc-config --prefix failed:check syntax or specify the compiler."; exit ; }
+nc_config__includedir=$( $nc_config__which --includedir) || { echo "nc-config --includedir failed:check syntax or specify the compiler."; exit ; }
+nc_config__libdir=$( $nc_config__which --libdir) || { echo "nc-config --libdir failed:check syntax or specify the compiler."; exit ; }
+nc_config__cflags=$( $nc_config__which --cflags ) || { echo "nc-config --cflags failed: check syntax."; exit ; }
+nc_config__libs=$( $nc_config__which --libs) || { echo "nc-config --libs failed:check syntax."; exit ; }
+
+
+
+#nf_config__which=/usr/bin/nf-config
+nf_config__which=$( which nf-config ) || { echo "which nf-config failed: check syntax or specify directly the path."; exit ; }
+nf_config__fc=$( $nf_config__which --fc) || { echo "nf-config --fc failed:check syntax or specify the compiler."; exit ; }
+nf_config__prefix=$( $nf_config__which --prefix) || { echo "nf-config --prefix failed:check syntax or specify the compiler."; exit ; }
+nf_config__includedir=$( $nf_config__which --includedir) || { echo "nf-config --includedir failed:check syntax or specify the compiler."; exit ; }
+nf_config__libdir="$nf_config__prefix/lib"
+nf_config__fflags=$( $nf_config__which --fflags ) || { echo "nf-config --fflags failed: check syntax."; exit ; }
+nf_config__flibs=$( $nf_config__which --flibs) || { echo "nf-config --flibs failed:check syntax."; exit ; }
+
+echo 
+echo "netCDF C version"
+echo "nc-config --cc:        " $nc_config__cc
+echo "nc-config directory:   " $nc_config__which
+echo "nc-config --prefix:    " $nc_config__prefix
+echo "nc-config --includedir:" $nc_config__includedir
+echo "nc-config --libdir:    " $nc_config__libdir
+echo "nc-config --cflags:    " $nc_config__cflags
+echo "nc-config --libs:      " $nc_config__libs
+echo 
+echo "netCDF Fortran version"
+echo "nf-config --fc:        " $nf_config__fc
+echo "nf-config directory:   " $nf_config__which
+echo "nf-config --prefix:    " $nf_config__prefix
+echo "nf-config --includedir:" $nf_config__includedir
+echo "nf-config --libdir:    " $nf_config__libdir
+echo "nf-config --fflags:    " $nf_config__fflags
+echo "nf-config --flibs:     " $nf_config__flibs
+echo 
+
+netCDF_Libs="$nf_config__fflags -L$nf_config__prefix/lib -lnetcdff"
+netCDF_Libs="-I$nc_config__includedir -I$nf_config__includedir -L$nc_config__libdir -L$nf_config__libdir  -lnetcdf -lnetcdff" 
