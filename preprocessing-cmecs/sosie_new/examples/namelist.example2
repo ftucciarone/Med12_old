@@ -1,0 +1,76 @@
+!! -------------------
+!! Namelist for SOSIE
+!! -------------------
+!!
+!! EXAMPLE 2: 3D interpolation from regular lat-lon to ORCA grid
+!! ##############################################################
+!!
+!!
+&ndom_src
+csource    = 'EN.4.2.0_360x173L42'
+ivect      = 0
+l_reg_src  = .true.
+cf_src     = 'data/temperature_EN.4.2.0_january_clim_1990-2010.nc'
+cv_src     = 'temperature'
+cv_t_src   = 'time'
+cf_x_src   = 'data/temperature_EN.4.2.0_january_clim_1990-2010.nc'
+cv_lon_src = 'lon'
+cv_lat_src = 'lat'
+cf_lsm_src = 'missing_value'
+cv_lsm_src = ''
+ewper_src  = 0  ! (360. to 1.)
+!!
+!! Only required if 3D interpolation (jplev==0):
+cf_z_src  = 'data/temperature_EN.4.2.0_january_clim_1990-2010.nc'
+cv_z_src  = 'depth'
+ctype_z_src = 'z'
+/
+!!
+!!
+&ndom_trg
+ctarget    = 'ORCA1L75'
+l_reg_trg  = .false
+cf_x_trg   = 'data/mesh_mask_ORCA1_light.nc'
+cv_lon_trg = 'nav_lon'
+cv_lat_trg = 'nav_lat'
+cf_lsm_trg = 'data/mesh_mask_ORCA1_light.nc'
+cv_lsm_trg = 'tmask'
+ewper_trg  = 2
+!!
+!! Only required if 3D interpolation (jplev==0):
+cf_z_trg = 'data/mesh_mask_ORCA1_light.nc'
+cv_z_trg = 'nav_lev'
+ctype_z_trg = 'z'
+/
+!!
+!!
+&ninterp
+cmethod  = 'akima'
+!!
+idrown      = 100,50
+l_save_drwn = .true.
+ismooth     = 0
+jt1         = 0
+jt2         = 0
+jplev       = 0  ! we want 3D interpolation
+vmax        =  1.E6
+vmin        = -1.E6
+ismooth_out = 0
+/
+!!
+!!
+&noutput
+cv_out    = 'temp'
+cu_out    = 'deg.C'
+cln_out   = 'Temperature, EN.4.2.0, clim. January: 1990-2010'
+cv_t_out  = 'time_counter'
+cd_out    = '.'
+cextra    = 'january_clim_1990-2010'
+lmout     = .true.
+rmiss_val = -9999.
+lct       = .false.
+t0        = 0.
+t_stp     = 0.
+cv_z_out  = 'depth'
+/
+!!
