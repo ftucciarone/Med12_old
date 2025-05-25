@@ -2,19 +2,19 @@
 # ============================================
 
 # Fortran compiler:
-FC = ifort
+FC = /usr/local/bin/gfortran
 
 # Root directory for Netcdf:
-NETCDF_DIR = /store/Andrea.Storto/intel/oneapi/netcdf-c-4.7.4-f-4.5.3-impi
+NETCDF_DIR = /usr/local/Cellar/netcdf/4.9.3 -I/usr/local/Cellar/netcdf-fortran/4.6.2
 
 # Linking argument: usually -lnetcdf or -lnetcdff (or both):
-L_NCDF =  -lnetcdff -lnetcdf
+L_NCDF = -L/usr/local/Cellar/netcdf/4.9.3/lib -L/usr/local/Cellar/netcdf-fortran/4.6.2/lib -lnetcdf -lnetcdff
 
 # Fortran compilation flags:
 
 ##EXTRA_DEBUG_FLAGS = -g -check all -fpe0 -warn all -traceback -debug extended -C
 
-FF = -O2 -i4 $(EXTRA_DEBUG_FLAGS) -module mod/
+FF = -Ofast -fbounds-check -Wno-uninitialized -ffree-line-length-512 $(EXTRA_DEBUG_FLAGS) -J./mod/
 
 # Directory to install binaries:
 INSTALL_DIR = /usr/local
