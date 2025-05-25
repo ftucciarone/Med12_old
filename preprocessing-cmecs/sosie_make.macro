@@ -1,0 +1,36 @@
+# Makefile for SOSIE with gfortran on Mac
+# ============================================
+
+
+
+nc_config__which=/usr/bin/nc-config
+nc_config__which=$( which nc-config ) || { echo "which nc-config failed: check syntax or specify directly the path."; exit ; }
+nc_config__fflags=$( $nc_config__which --fflags ) || { echo "nc-config --flags failed: check syntax."; exit ; }
+nc_config__flibs=$( $nc_config__which --flibs) || { echo "nc-config --flibs failed:check syntax."; exit ; }
+nc_config__fc=$( $nc_config__which --fc) || { echo "nc-config --fc failed:check syntax or specify the compiler."; exit ; }
+
+
+COMP=$(nc_config__fc) -Ofast -fbounds-check -Wall -Wno-uninitialized -ffree-line-length-512 
+
+
+
+
+# Fortran compiler:
+FC = /usr/local/bin/gfortran 
+#-I/usr/local/include -L/usr/local/lib -lnetcdf -lnetcdff -ldl -lm
+
+# Root directory for Netcdf:
+NETCDF_DIR = /usr/local/include -L/usr/local/lib -lnetcdf -lnetcdff -ldl -lm
+#/store/Andrea.Storto/intel/oneapi/netcdf-c-4.7.4-f-4.5.3-impi
+
+# Linking argument: usually -lnetcdf or -lnetcdff (or both):
+L_NCDF =
+
+# Fortran compilation flags:
+
+##EXTRA_DEBUG_FLAGS = -g -check all -fpe0 -warn all -traceback -debug extended -C
+
+FF = -O2 $(EXTRA_DEBUG_FLAGS) -J./mod/
+
+# Directory to install binaries:
+INSTALL_DIR = /usr/local
