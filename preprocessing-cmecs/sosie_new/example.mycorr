@@ -1,0 +1,1 @@
+bin/mycorr_vect.x -m GLORYS2V4_mesh_mask_red.nc -G T -t time -i int_grepv2_5daymean_2011_25.nc int_grepv2_5daymean_2011_25.nc -v uo_glor vo_glor
