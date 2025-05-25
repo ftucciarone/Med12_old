@@ -21,6 +21,7 @@ Compiling the executables:
    this file must specify your compiler and options as well as the path to netcdf
 
  * It's important to specify the default INTEGER precision to 4 in your compilation flags (switch "-i4" for *ifort* and "-fdefault-integer-4" for *Gfortran*)
+   [!WARNING] this flag does not work on gfortran 
 
  * compile the executables by simply running "make" (gmake)
 
