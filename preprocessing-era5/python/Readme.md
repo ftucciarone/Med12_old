@@ -53,7 +53,7 @@ We have three main directories (along with a `home` directory):
  
 These directories are set in the `.json` file `directories.json` with the following syntax:
 
-https://github.com/ftucciarone/Med12/blob/0c60baaae4cfdeec9b4ef27d86b35d11ade75f03/preprocessing-era5/python/directories.json#L1-L7
+https://github.com/ftucciarone/Med12_old/blob/0c60baaae4cfdeec9b4ef27d86b35d11ade75f03/preprocessing-era5/python/directories.json#L1-L7
 
 and are accessed in each processing file as
 ```python
@@ -88,21 +88,21 @@ param = {
 ### 10m wind $u,v-$ components (`u10m` and `v10m`)
 These parameter are the [eastward](https://codes.ecmwf.int/grib/param-db/165) ($u$) and [northward](https://codes.ecmwf.int/grib/param-db/166) ($v$) components of the 10m wind. They are the horizontal speed of air moving towards the east and the north, respectively, at a height of ten metres above the surface of the Earth, in metres per second.
 
-https://github.com/ftucciarone/Med12/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_10m_components_of_wind.py#L1-L50
+https://github.com/ftucciarone/Med12_old/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_10m_components_of_wind.py#L1-L50
 
 <p align="center">
-  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/u10m_wind.gif?raw=true" alt="animated" />
-  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/v10m_wind.gif?raw=true" alt="animated" />
+  <img src="https://github.com/ftucciarone/Med12_old/blob/main/preprocessing-era5/python/figures/u10m_wind.gif?raw=true" alt="animated" />
+  <img src="https://github.com/ftucciarone/Med12_old/blob/main/preprocessing-era5/python/figures/v10m_wind.gif?raw=true" alt="animated" />
 </p>
 
 
 ### 2m Temperature (`t2m`)
 This parameter is the temperature of air at 2m above the surface of land, sea or in-land waters. This parameter has units of kelvin (K). Temperature measured in kelvin can be converted to degrees Celsius (°C) by subtracting 273.15.
 
-https://github.com/ftucciarone/Med12/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_2m_temperature.py#L1-L41
+https://github.com/ftucciarone/Med12_old/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_2m_temperature.py#L1-L41
 
 <p align="center">
-  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/t2m.gif?raw=true" alt="animated" />
+  <img src="https://github.com/ftucciarone/Med12_old/blob/main/preprocessing-era5/python/figures/t2m.gif?raw=true" alt="animated" />
 </p>
 
 ### Total Precipitation (`precip`)
@@ -111,10 +111,10 @@ This parameter is the accumulated liquid and frozen water, comprising rain and s
 This parameter is the total amount of [water accumulated over a particular time period which depends on the data extracted](https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation#ERA5:datadocumentation-Meanrates/fluxesandaccumulations). The units of this parameter are depth in metres of water equivalent. It is the depth the water would have if it were spread evenly over the grid box.
 
 
-https://github.com/ftucciarone/Med12/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_total_precipitation.py#L1-L41
+https://github.com/ftucciarone/Med12_old/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_total_precipitation.py#L1-L41
 
 <p align="center">
-  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/total_precip.gif?raw=true" alt="animated" />
+  <img src="https://github.com/ftucciarone/Med12_old/blob/main/preprocessing-era5/python/figures/total_precip.gif?raw=true" alt="animated" />
 </p>
 
 ### Snowfall (`snow`)  
@@ -122,10 +122,10 @@ This parameter is the accumulated snow that falls to the Earth's surface. It is 
 
 This parameter is the total amount of [water accumulated over a particular time period which depends on the data extracted](https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation#ERA5:datadocumentation-Meanrates/fluxesandaccumulations) The units of this parameter are depth in metres of water equivalent. It is the depth the water would have if it were spread evenly over the grid box.
 
-https://github.com/ftucciarone/Med12/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_snowfall.py#L1-L41
+https://github.com/ftucciarone/Med12_old/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_snowfall.py#L1-L41
 
 <p align="center">
-  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/snowfll.gif?raw=true" alt="animated" />
+  <img src="https://github.com/ftucciarone/Med12_old/blob/main/preprocessing-era5/python/figures/snowfll.gif?raw=true" alt="animated" />
 </p>
 
 ### Surface Solar Radiation Downwards (`swrd`)
@@ -137,10 +137,10 @@ To a reasonably good approximation, this parameter is the model equivalent of wh
 
 This parameter [is accumulated over a particular time period which depends on the data extracted](https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation#ERA5:datadocumentation-Meanrates/fluxesandaccumulations). The units are joules per square metre (J m-2). To convert to watts per square metre (W m-2), the accumulated values should be divided by the accumulation period expressed in seconds.
 
-https://github.com/ftucciarone/Med12/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_surface_solar_radiation_downwards.py#L1-L41
+https://github.com/ftucciarone/Med12_old/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_surface_solar_radiation_downwards.py#L1-L41
 
 <p align="center">
-  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/swrd.gif?raw=true" alt="animated" />
+  <img src="https://github.com/ftucciarone/Med12_old/blob/main/preprocessing-era5/python/figures/swrd.gif?raw=true" alt="animated" />
 </p>
 
 ### Surface Thermal Radiation Downwards (`lwrd`)
@@ -150,12 +150,12 @@ The surface of the Earth emits thermal radiation, some of which is absorbed by t
 
 This parameter [is accumulated over a particular time period which depends on the data extracted](https://confluence.ecmwf.int/display/CKB/ERA5%3A+data+documentation#ERA5:datadocumentation-Meanrates/fluxesandaccumulations). The units are joules per square metre (J m-2). To convert to watts per square metre (W m-2), the accumulated values should be divided by the accumulation period expressed in seconds.
 
-https://github.com/ftucciarone/Med12/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_surface_thermal_radiation_downwards.py#L1-L41
+https://github.com/ftucciarone/Med12_old/blob/6733a2eacd2244d05870f1bbe636c14d8648cd32/preprocessing-era5/python/runproc_surface_thermal_radiation_downwards.py#L1-L41
 
 <p align="center">
-  <img src="https://github.com/ftucciarone/Med12/blob/main/preprocessing-era5/python/figures/lwrd.gif?raw=true" alt="animated" />
+  <img src="https://github.com/ftucciarone/Med12_old/blob/main/preprocessing-era5/python/figures/lwrd.gif?raw=true" alt="animated" />
 </p>
 
 
 #
-https://github.com/ftucciarone/Med12/blob/c6f489633bd606f16a767a00ea3333fc11039eb3/preprocessing-era5/python/era5_process.py#L1-L147
+https://github.com/ftucciarone/Med12_old/blob/c6f489633bd606f16a767a00ea3333fc11039eb3/preprocessing-era5/python/era5_process.py#L1-L147
